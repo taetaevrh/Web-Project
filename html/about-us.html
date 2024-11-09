@@ -6,6 +6,18 @@
     <title>About Us - Sasuke Ramen</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yanone+Kaffeesatz:wght@200..700&display=swap');
+        
+        p {
+            font-family: "Noto Sans Thai", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+        }
+    </style>
 </head>
 <body class="flex flex-col h-screen">
     <nav class="flex justify-between px-5 bg-red-600 py-2">
@@ -65,10 +77,22 @@
     </nav>
 
     <div class="relative flex-grow bg-gradient-to-r from-neutral-800 via-zinc-950 to-black">
-        <h1 class="text-white font-bold text-5xl flex justify-center mt-[70px]">
+        <h1 class="text-white font-bold text-6xl flex justify-center mt-[80px]">
             About Us
         </h1>
-        <img class="absolute w-[800px] h-[800px] -left-[350px] top-[100px] blur-[3px] drop-shadow-5xl" src="https://github.com/taetaevrh/Web-Project/blob/main/img/vecteezy_ai-generated-plate-of-ramen-isolated-on-transparent-background_36083981.png?raw=true" alt="ramen-pic">
+        <img class="absolute w-[800px] h-[800px] object-cover -left-[350px] top-[100px] blur-[3px] drop-shadow-5xl" src="https://github.com/taetaevrh/Web-Project/blob/main/img/vecteezy_ai-generated-plate-of-ramen-isolated-on-transparent-background_36083981.png?raw=true" alt="ramen-pic">
+        <!-- HISTORY -->
+         <div class="absolute right-0 flex justify-end top-[350px] w-[50%]">
+            <div class="text-white mr-5">
+                <h1 class="flex justify-end font-bold text-5xl mb-7">
+                    History
+                </h1>
+                <p class="text-balance text-right text-lg">
+                    Sasuke Ramen คือร้านอาหารที่เริ่มต้นจากร้านราเมงขนาดเล็กในชุมชน โดยมีจุดเด่นที่น้ำซุปสูตรพิเศษหลากหลายสูตร และเส้นราเมงที่เหนียวนุ่ม ทำให้ร้านได้รับความนิยมอย่างรวดเร็ว ด้วยการเติบโตของธุรกิจและความต้องการในการเพิ่มความสะดวกให้กับลูกค้า ร้านจึงได้พัฒนาเว็บไซต์ "Sasuke Ramen" เพื่อแสดงเมนูอาหารของร้านค้า ลูกค้าสามารถเลือกชมเมนูราเมงต่าง ๆ ของทางร้านได้อย่างง่ายดาย โดยเว็บไซต์ถูกออกแบบมาเพื่อให้ลูกค้าสามารถเข้าถึงเมนูที่ต้องการได้อย่างรวดเร็ว ในด้านการค้นหาสินค้า และทำให้ลูกค้าสามารถเลือกชมราเมงที่ชื่นชอบได้สะดวกจากทุกที่ รองรับการขยายตัวของธุรกิจในยุคดิจิทัลที่ต้องการความรวดเร็ว และความสะดวกสบายในการใช้งาน
+                </p>
+            </div>
+            <img class="w-[300px] h-[300px]" src="https://github.com/taetaevrh/Web-Project/blob/main/img/ramen-aboutus-right.png?raw=true" alt="ramen2-pic">
+        </div>
     </div>
 
     <footer class="px-5 w-full flex items-center bg-gray-300 py-6 gap-7 fixed bottom-0">
