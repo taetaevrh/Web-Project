@@ -10,7 +10,7 @@
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap");
 
-            header {
+            h1 {
                 font-family: "Yanone Kaffeesatz", sans-serif;
                 font-optical-sizing: auto;
                 font-style: normal;
@@ -18,7 +18,7 @@
         </style>
     </head>
     <body class="flex flex-col h-screen">
-        <nav class="flex justify-between px-5 bg-red-600 py-2 top-0 sticky">
+        <nav class="flex justify-between px-5 bg-orange-600 py-2 top-0 sticky">
             <ul class="flex gap-5">
                 <li>
                     <a
@@ -132,7 +132,7 @@
                     </a>
                 </li>
             </ul>
-            <h1 class="flex gap-1 text-black font-medium cursor-pointer">
+            <span class="flex gap-1 text-black font-medium cursor-pointer">
                 <svg
                     class="w-6 h-6 text-black dark:text-white"
                     aria-hidden="true"
@@ -150,27 +150,50 @@
                 </svg>
 
                 LOGIN
-            </h1>
+            </span>
         </nav>
 
-        <div></div>
+        <div class="flex flex-col flex-grow items-center mt-10">
+                <div class="flex items-center gap-5 mb-2">
+                    <img class="w-[50px]" src="https://github.com/taetaevrh/Web-Project/blob/main/img/sasuke-home.png?raw=true" alt="Sasuke-Pic">
+                    <h1 class="text-7xl font-bold mt-5">
+                        Sasuke Ramen
+                    </h1>
+                </div>
 
-        <div class="flex justify-center items-center">
-            <div class="bg-red-100 p-10 rounded-xl">
-                <h1 class="text-2xl font-bold">Administrator Login</h1>
-
-                <form class="flex flex-col gap-5">
-                    <section>
-                        <label for="">Email Address</label>
-                        <input type="email" placeholder="You email here..." />
+            <div class="border bg-red-100 p-10 rounded-xl w-[500px]">
+                <h3 class="flex text-3xl font-bold mb-9 justify-center">Administrator Login</h3>
+                <form action="" method="POST">
+                    <!-- EMAIL -->
+                    <section class="mb-5">
+                        <label class="text-lg" for="txtemail">Email Address</label><br>
+                        <input class="border w-full px-5 py-3 rounded-md mt-2" type="email" name="txtemail" placeholder="You email here..." />
                     </section>
+                    <!-- PASSWORD -->
                     <section>
-                        <label for="">Password</label>
+                        <label class="text-lg" for="txtpass">Password</label><br>
                         <input
+                            class="border w-full px-5 py-3 rounded-md mt-2"
                             type="password"
+                            name="txtpass"
                             placeholder="Your password here..."
                         />
                     </section>
+                    <!-- FORGOT PASSWORD? -->
+                    <section class=" mt-1">
+                        <a href="" class="text-sm text-gray-500">
+                            Forgot Password?
+                        </a>
+                    </section>
+                    <!-- REMEMBER ME -->
+                    <section class="flex mt-5 items-center gap-2">
+                        <input class="w-[18px] h-[18px]" type="checkbox" name="rememberme">
+                        <label for="rememberme">Remember me</label>
+                    </section>
+                    <!-- LOGIN BUTTON -->
+                    <button class="flex text-white text-lg font-medium w-full bg-orange-500 justify-center items-center py-3 mt-3 rounded-md">
+                        Login
+                    </button>
                 </form>
             </div>
         </div>
