@@ -9,7 +9,7 @@ const app = express();
 const router = express.Router()
 
 dotenv.config();
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 2004
 
 app.use(router);
 app.use(express.urlencoded({ extended: true }))
