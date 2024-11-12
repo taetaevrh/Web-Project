@@ -9,23 +9,21 @@
 
         <style>
             /* YANONE KAFFEESATZ */
-            @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap');
+            @import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap");
             /* ROBOTO */
-            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yanone+Kaffeesatz:wght@200..700&display=swap');
-    
-            
+            @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yanone+Kaffeesatz:wght@200..700&display=swap");
+
             * {
                 font-family: "Roboto", serif;
                 font-weight: 400;
                 font-style: normal;
             }
-    
+
             h1 {
                 font-family: "Yanone Kaffeesatz", sans-serif;
                 font-optical-sizing: auto;
                 font-style: normal;
             }
-    
         </style>
     </head>
     <body class="flex flex-col h-screen">
@@ -165,24 +163,36 @@
         </nav>
 
         <div class="flex flex-col flex-grow items-center mt-10">
-                <div class="flex items-center gap-5 mb-2">
-                    <img class="w-[50px]" src="https://github.com/taetaevrh/Web-Project/blob/main/img/sasuke-home.png?raw=true" alt="Sasuke-Pic">
-                    <h1 class="text-7xl font-bold mt-5">
-                        Sasuke Ramen
-                    </h1>
-                </div>
+            <div class="flex items-center gap-5 mb-2">
+                <img
+                    class="w-[50px]"
+                    src="https://github.com/taetaevrh/Web-Project/blob/main/img/sasuke-home.png?raw=true"
+                    alt="Sasuke-Pic"
+                />
+                <h1 class="text-7xl font-bold mt-5">Sasuke Ramen</h1>
+            </div>
 
             <div class="border bg-red-100 p-10 rounded-xl w-[500px]">
-                <h3 class="flex text-3xl font-bold mb-9 justify-center">Administrator Login</h3>
+                <h3 class="flex text-3xl font-bold mb-9 justify-center">
+                    Administrator Login
+                </h3>
                 <form action="" method="POST">
                     <!-- EMAIL -->
                     <section class="mb-5">
-                        <label class="text-lg" for="txtemail">Email Address</label><br>
-                        <input class="border w-full px-5 py-3 rounded-md mt-2 placeholder:text-sm" type="email" name="txtemail" placeholder="You email here..." />
+                        <label class="text-lg" for="txtemail"
+                            >Email Address</label
+                        ><br />
+                        <input
+                            class="border w-full px-5 py-3 rounded-md mt-2 placeholder:text-sm"
+                            type="email"
+                            name="txtemail"
+                            placeholder="You email here..."
+                        />
                     </section>
                     <!-- PASSWORD -->
                     <section>
-                        <label class="text-lg" for="txtpass">Password</label><br>
+                        <label class="text-lg" for="txtpass">Password</label
+                        ><br />
                         <input
                             class="border w-full px-5 py-3 rounded-md mt-2 placeholder:text-sm"
                             type="password"
@@ -191,18 +201,24 @@
                         />
                     </section>
                     <!-- FORGOT PASSWORD? -->
-                    <section class=" mt-1">
+                    <section class="mt-1">
                         <a href="" class="text-sm text-gray-500">
                             Forgot Password?
                         </a>
                     </section>
                     <!-- REMEMBER ME -->
                     <section class="flex mt-5 items-center gap-2">
-                        <input class="w-[18px] h-[18px]" type="checkbox" name="rememberme">
+                        <input
+                            class="w-[18px] h-[18px]"
+                            type="checkbox"
+                            name="rememberme"
+                        />
                         <label for="rememberme">Remember me</label>
                     </section>
                     <!-- LOGIN BUTTON -->
-                    <button class="flex text-white text-lg font-medium w-full bg-orange-500 justify-center items-center py-3 mt-3 rounded-md">
+                    <button
+                        class="flex text-white text-lg font-medium w-full bg-orange-500 justify-center items-center py-3 mt-3 rounded-md"
+                    >
                         Login
                     </button>
                 </form>
