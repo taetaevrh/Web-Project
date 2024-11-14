@@ -1,6 +1,7 @@
 import React from "react";
 import { FaSquareFacebook, FaSquareInstagram } from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
+import propTypes from "prop-types";
 
 const Contactcard_icon = (props) => {
     return (
@@ -47,5 +48,11 @@ const Contactcard_icon = (props) => {
         </>
     );
 };
+
+Contactcard_icon.propTypes = {
+    flink: propTypes.string,
+    ilink: propTypes.string,
+    mlink: propTypes.string,
+}
 
 export default Contactcard_icon;
