@@ -23,7 +23,7 @@ const Aboutus = () => {
                         <h1 className="flex justify-end font-bold text-5xl mb-7">
                             History
                         </h1>
-                        <p className="text-balance text-right text-lg">
+                        <p className="thai-text text-balance text-right text-lg">
                             Sasuke Ramen
                             คือร้านอาหารที่เริ่มต้นจากร้านราเมงขนาดเล็กในชุมชน
                             โดยมีจุดเด่นที่น้ำซุปสูตรพิเศษหลากหลายสูตร
