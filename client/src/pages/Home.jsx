@@ -7,7 +7,7 @@ const Home = () => {
         <>
             <header className="w-full flex items-center justify-center bg-gray-300 py-3 gap-5">
                 <img
-                    src="https://github.com/taetaevrh/Web-Project/blob/main/img/sasuke-home.png?raw=true"
+                    src="img/sasuke-home.png"
                     alt="Sasuke-Pic"
                     width="50px"
                 />

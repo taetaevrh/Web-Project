@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const Aboutus = () => {
+const AboutUs = () => {
     return (
         <div className="flex flex-col h-screen">
 
@@ -53,4 +53,4 @@ const Aboutus = () => {
     );
 };
 
-export default Aboutus;
+export default AboutUs;

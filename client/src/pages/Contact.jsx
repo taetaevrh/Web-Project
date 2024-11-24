@@ -1,6 +1,6 @@
 import React from "react";
+import Contactcard from "../components/Contactcard";
 import Navbar from "../components/Navbar";
-import Contactcard from "../props/Contactcard";
 import Footer from "../components/Footer";
 
 const Contact = () => {
@@ -28,7 +28,7 @@ const Contact = () => {
                     {/* YEEN CARD */}
                     <Contactcard
                         name="Panaiyakorn Phanyaichada"
-                        img="../public/img/IMG_3895.png"
+                        img="/img/IMG_3895.png"
                         img_alt="yeen-pic"
                         flink="https://www.facebook.com/yeen.panaiyakorn"
                         ilink="https://www.instagram.com/yeenzx/"
@@ -37,7 +37,7 @@ const Contact = () => {
                     {/* JA CARD */}
                     <Contactcard
                         name="Putinan Techavataporn"
-                        img="../public/img/IMG_3909.png"
+                        img="/img/IMG_3909.png"
                         img_alt="ja-pic"
                         flink="https://www.facebook.com/profile.php?id=100011714463537"
                         ilink="https://www.instagram.com/putinan.ig/"
@@ -47,7 +47,7 @@ const Contact = () => {
                     {/* TAETAE CARD */}
                     <Contactcard
                         name="Varich Maleevan"
-                        img="../public/img/taetae.jpg"
+                        img="/img/taetae.jpg"
                         img_alt="taetae-pic"
                         flink="https://www.facebook.com/taetae2004"
                         ilink="https://www.instagram.com/taetae.vrh/"
@@ -57,7 +57,7 @@ const Contact = () => {
                     {/* IM CARD */}
                     <Contactcard
                         name="Siriprapas Kimpee"
-                        img="../public/img/keekie.jpg"
+                        img="/img/keekie.jpg"
                         img_alt="im-pic"
                         flink="https://www.facebook.com/siriprapas.kimpee"
                         ilink="https://www.instagram.com/iimmyyy__/"

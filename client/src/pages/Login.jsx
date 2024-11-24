@@ -11,7 +11,7 @@ const Login = () => {
                 <div className="flex items-center gap-5 mb-2">
                     <img
                         className="w-[50px]"
-                        src="https://github.com/taetaevrh/Web-Project/blob/main/img/sasuke-home.png?raw=true"
+                        src="/img/sasuke-home.png"
                         alt="Sasuke-Pic"
                     />
                     <h1 className="logo-text text-7xl font-bold mt-5">
@@ -22,7 +22,7 @@ const Login = () => {
                     <h3 className="flex text-3xl font-bold mb-9 justify-center">
                         Administrator Login
                     </h3>
-                    <form action="" method="POST">
+                    <form>
                         {/* EMAIL */}
                         <section className="mb-5">
                             <label className="text-lg" htmlFor="txtemail">

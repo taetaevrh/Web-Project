@@ -31,13 +31,4 @@ const Contactcard = (props) => {
     );
 };
 
-Contactcard.propTypes = {
-    img: propTypes.string,
-    img_alt: propTypes.string,
-    name: propTypes.string,
-    flink: propTypes.string,
-    ilink: propTypes.string,
-    mlink: propTypes.string,
-}
-
 export default Contactcard;
