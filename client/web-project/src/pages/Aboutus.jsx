@@ -13,12 +13,12 @@ const Aboutus = () => {
                     About Us
                 </h1>
                 <img
-                    className="absolute w-[800px] h-[800px] object-cover -left-[350px] top-[100px] drop-shadow-5xl"
+                    className="absolute w-1/3 object-cover -left-[250px] top-1/4 drop-shadow-5xl"
                     src="../../public/img/vecteezy_ai-generated-plate-of-ramen-isolated-on-transparent-background_36083981.png"
                     alt="ramen-pic"
                 />
                 {/* HISTORY */}
-                <div className="absolute right-0 flex justify-end top-[350px] w-[50%]">
+                <div className="absolute right-0 flex justify-end top-1/3 w-[50%]">
                     <div className="text-white mr-5">
                         <h1 className="flex justify-end font-bold text-5xl mb-7">
                             History

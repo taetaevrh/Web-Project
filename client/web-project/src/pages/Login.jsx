@@ -65,7 +65,7 @@ const Login = () => {
                             <label htmlFor="rememberme">Remember me</label>
                         </section>
                         {/* LOGIN BUTTON */}
-                        <button className="flex text-white text-lg font-medium w-full bg-orange-500 justify-center items-center py-3 mt-3 rounded-md">
+                        <button type="submit" className="flex text-white text-lg font-medium w-full bg-orange-500 justify-center items-center py-3 mt-3 rounded-md">
                             Login
                         </button>
                     </form>
