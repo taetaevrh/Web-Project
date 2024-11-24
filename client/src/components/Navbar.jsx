@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
+import axios from "axios";
+import { useEffect } from "react";
+import { FaScrewdriverWrench } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
+    const url = "http://localhost:3001/checktoken";
+    const [email, setEmail] = useState("");
+
+    useEffect(() => {
+        const checkLogin = async () => {
+            try {
+                const response = await axios.post(url);
+                console.log(response);
+                setEmail(response.data.result.email);
+            } catch (error) {}
+        };
+
+        checkLogin();
+    }, []);
+
     return (
         <nav className="flex justify-between px-5 bg-orange-600 py-2 top-0 sticky">
             <ul className="flex gap-5">
@@ -18,7 +37,7 @@ const Navbar = () => {
                         <IoHome className="text-xl" />
                         <p className="relative inline-block">
                             HOME
-                            <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" />
+                            <NavLink to="/" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`} />
                         </p>
                     </NavLink>
                 </li>
@@ -40,7 +59,7 @@ const Navbar = () => {
                     </svg>
                     <p className="relative inline-block">
                         MENU
-                        <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" />
+                        <NavLink to="/menu" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`} />
                     </p>
                 </li>
                 <li>
@@ -69,7 +88,7 @@ const Navbar = () => {
                         </svg>
                         <p className="relative inline-block">
                             ABOUT US
-                            <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" />
+                            <NavLink to="/about-us" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`} />
                         </p>
                     </NavLink>
                 </li>
@@ -95,39 +114,65 @@ const Navbar = () => {
                         </svg>
                         <p className="relative inline-block">
                             CONTACT
-                            <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" />
+                            <NavLink to="/contact" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`} />
                         </p>
                     </NavLink>
                 </li>
             </ul>
-            <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                    `${
-                        isActive ? "font-bold text-black" : "text-white"
-                    } flex gap-1 transition-all duration-300 delay-150 hover:scale-105 cursor-pointer group`
-                }
-            >
-                <svg
-                    className="w-6 h-6"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
+            {email ? (
+                <>
+                    {/* MANAGE */}
+                    <div className="flex gap-7">
+                        <NavLink
+                            to="/management"
+                            className={({ isActive }) =>
+                                `${
+                                    isActive
+                                        ? "font-bold text-black"
+                                        : "text-white"
+                                } flex gap-1 transition-all duration-300 delay-150 hover:scale-105 cursor-pointer group`
+                            }
+                        >
+                            <div className="flex items-center justify-center gap-1">
+                                <FaScrewdriverWrench />
+                                <p className="relative inline-block">
+                                    MANAGE
+                                    {/* <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" /> */}
+                                    <NavLink to="/management" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`}></NavLink>
+                                </p>
+                            </div>
+                        </NavLink>
+                        {/* LOGOUT */}
+                        <NavLink className="text-white flex gap-1 transition-all duration-300 delay-150 hover:scale-105 cursor-pointer group">
+                            {" "}
+                            <div className="flex items-center justify-center gap-1">
+                                <FaUser />
+                                <p className="relative inline-block">
+                                    LOGOUT
+                                    <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" />
+                                </p>
+                            </div>
+                        </NavLink>
+                    </div>
+                </>
+            ) : (
+                <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                        `${
+                            isActive ? "font-bold text-black" : "text-white"
+                        } flex gap-1 transition-all duration-300 delay-150 hover:scale-105 cursor-pointer group`
+                    }
                 >
-                    <path
-                        fillRule="evenodd"
-                        d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z"
-                        clipRule="evenodd"
-                    />
-                </svg>
-                <p className="relative inline-block">
-                    LOGIN
-                    <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" />
-                </p>
-            </NavLink>
+                    <div className="flex items-center justify-center gap-1">
+                        <FaUser />
+                        <p className="relative inline-block">
+                            LOGIN
+                            <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" />
+                        </p>
+                    </div>
+                </NavLink>
+            )}
         </nav>
     );
 };

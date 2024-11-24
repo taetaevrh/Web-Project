@@ -1,23 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Logo from "../components/Logo"
 
 const Login = () => {
+    axios.defaults.withCredentials = true;
+    const [user, setUser] = useState({ email: "", password: "" });
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.post(
+                "http://localhost:3001/login",
+                user
+            );
+            console.log(response.data.message);
+            navigate("/management");
+        } catch (err) {
+            console.log(err.response.data);
+        }
+    };
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setUser((prev) => ({ ...prev, [name]: value }));
+        console.log(user);
+    };
+
     return (
         <div className="flex flex-col h-screen">
-            
             <Navbar />
 
             <div className="flex flex-col flex-grow items-center mt-10">
-                <div className="flex items-center gap-5 mb-2">
-                    <img
-                        className="w-[50px]"
-                        src="/img/sasuke-home.png"
-                        alt="Sasuke-Pic"
-                    />
-                    <h1 className="logo-text text-7xl font-bold mt-5">
-                        Sasuke Ramen
-                    </h1>
-                </div>
+                <Logo />
                 <div className="border bg-red-100 p-10 rounded-xl w-[500px]">
                     <h3 className="flex text-3xl font-bold mb-9 justify-center">
                         Administrator Login
@@ -32,8 +49,9 @@ const Login = () => {
                             <input
                                 className="border w-full px-5 py-3 rounded-md mt-2 placeholder:text-sm"
                                 type="email"
-                                name="txtemail"
+                                name="email"
                                 placeholder="You email here..."
+                                onChange={handleChange}
                             />
                         </section>
                         {/* PASSWORD */}
@@ -45,27 +63,17 @@ const Login = () => {
                             <input
                                 className="border w-full px-5 py-3 rounded-md mt-2 placeholder:text-sm"
                                 type="password"
-                                name="txtpass"
+                                name="password"
                                 placeholder="Your password here..."
+                                onChange={handleChange}
                             />
-                        </section>
-                        {/* FORGOT PASSWORD? */}
-                        <section className="mt-1">
-                            <a href="" className="text-sm text-gray-500">
-                                Forgot Password?
-                            </a>
-                        </section>
-                        {/* REMEMBER ME */}
-                        <section className="flex mt-5 items-center gap-2">
-                            <input
-                                className="w-[18px] h-[18px]"
-                                type="checkbox"
-                                name="rememberme"
-                            />
-                            <label htmlFor="rememberme">Remember me</label>
                         </section>
                         {/* LOGIN BUTTON */}
-                        <button type="submit" className="flex text-white text-lg font-medium w-full bg-orange-500 justify-center items-center py-3 mt-3 rounded-md">
+                        <button
+                            type="submit"
+                            onClick={handleSubmit}
+                            className="flex text-white text-lg font-medium w-full bg-orange-500 justify-center items-center py-3 mt-16 rounded-md"
+                        >
                             Login
                         </button>
                     </form>

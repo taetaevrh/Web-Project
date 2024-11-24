@@ -1,19 +1,13 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Logo from "../components/Logo";
 
 const Home = () => {
     return (
         <>
-            <header className="w-full flex items-center justify-center bg-gray-300 py-3 gap-5">
-                <img
-                    src="img/sasuke-home.png"
-                    alt="Sasuke-Pic"
-                    width="50px"
-                />
-                <h1 className="logo-text text-5xl font-bold mt-6">
-                    Sasuke Ramen
-                </h1>
+            <header className="w-full flex items-center justify-center bg-gray-300 gap-5">
+                <Logo />
             </header>
 
             <Navbar />
