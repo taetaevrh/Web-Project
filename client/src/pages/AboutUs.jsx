@@ -13,7 +13,7 @@ const AboutUs = () => {
                     About Us
                 </h1>
                 <img
-                    className="absolute w-1/3 object-cover -left-[250px] top-1/4 drop-shadow-5xl"
+                    className="absolute w-1/3 object-cover left-[100px] top-[170px] drop-shadow-5xl"
                     src="../../public/img/vecteezy_ai-generated-plate-of-ramen-isolated-on-transparent-background_36083981.png"
                     alt="ramen-pic"
                 />
