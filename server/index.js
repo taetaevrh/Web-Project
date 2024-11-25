@@ -42,24 +42,26 @@ app.post("/login", (req, res) => {
         if (result.length === 0)
             return res.status(404).json({ error: "No user found" });
 
-        const token = jwt.sign({ email }, "decode", { expiresIn: "12h" });
+        const token = jwt.sign({ email }, "secret", { expiresIn: "12h" });
         res.cookie("key", token);
         res.json({ message: "Generate key successfully!" });
     });
 });
 
 app.post("/checktoken", (req, res) => {
-    const value = req.cookies.key;
-    console.log(value)
-    if (!value) return res.status(401).json({ message: "Session Expired" });
+    const token = req.cookies.key;
+    console.log(token);
+    if (!token) return res.status(401).json({ message: "Session Expired" });
 
-    jwt.verify(value, "decode", (err, result) => {
+    jwt.verify(token, "secret", (err, result) => {
         if (err) return res.status(500).json({ error: err });
         if (!result)
             return res
                 .status(403)
                 .json({ message: "เปลี่ยน Token ทำไมครับที่รัก" });
-        return res.status(200).json({ message: "มึงผ่าน ยินดีด้วย", result: result });
+        return res
+            .status(200)
+            .json({ message: "มึงผ่าน ยินดีด้วย", result: result });
     });
 });
 

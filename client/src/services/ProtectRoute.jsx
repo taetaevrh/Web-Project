@@ -13,7 +13,6 @@ const ProtectRoute = ({ children }) => {
         const checkLogin = async () => {
             try {
                 const response = await axios.post(url);
-                console.log(response);
                 if (response.status === 200) {
                     setIsAuthenticated(true);
                 }
