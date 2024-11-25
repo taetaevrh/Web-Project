@@ -7,15 +7,17 @@ import { FaScrewdriverWrench } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-    const checkTokenUrl = "http://localhost:3001/checktoken";
-    const [email, setEmail] = useState("");
+    const url = "http://localhost:3001/checktoken";
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         const checkLogin = async () => {
             try {
-                const response = await axios.post(checkTokenUrl);
+                const response = await axios.post(url);
                 console.log(response);
-                setEmail(response.data.result.email);
+                if (response.data.result.isAdmin === 1) {
+                    setIsAdmin(true);
+                }
             } catch (error) {
                 console.log(`error: ${error}`);
             }
@@ -149,7 +151,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
             </ul>
-            {email ? (
+            {isAdmin ? (
                 <>
                     {/* MANAGE */}
                     <div className="flex gap-7">

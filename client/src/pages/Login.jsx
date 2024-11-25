@@ -19,7 +19,7 @@ const Login = () => {
                 "http://localhost:3001/login",
                 user
             );
-            console.log(response.data.message);
+            console.log(response.data);
             navigate("/management");
         } catch (err) {
             console.log(err.response.data);
