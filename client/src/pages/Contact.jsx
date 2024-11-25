@@ -57,7 +57,7 @@ const Contact = () => {
                     {/* IM CARD */}
                     <Contactcard
                         name="Siriprapas Kimpee"
-                        img="/img/keekie.jpg"
+                        img=""
                         img_alt="im-pic"
                         flink="https://www.facebook.com/siriprapas.kimpee"
                         ilink="https://www.instagram.com/iimmyyy__/"
