@@ -8,16 +8,14 @@ import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
     const url = "http://localhost:3001/checktoken";
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [email, setEmail] = useState(false);
 
     useEffect(() => {
         const checkLogin = async () => {
             try {
                 const response = await axios.post(url);
-                console.log(response);
-                if (response.data.result.isAdmin === 1) {
-                    setIsAdmin(true);
-                }
+                console.log(response.data);
+                setEmail(response.data.result.email);
             } catch (error) {
                 console.log(`error: ${error}`);
             }
@@ -151,7 +149,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
             </ul>
-            {isAdmin ? (
+            {email ? (
                 <>
                     {/* MANAGE */}
                     <div className="flex gap-7">
