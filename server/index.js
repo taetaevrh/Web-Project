@@ -34,7 +34,7 @@ app.use(
 
 app.post("/login", (req, res) => {
     const query =
-        "SELECT Email, Password, isAdmin FROM Users WHERE Email = ? AND Password = ?";
+        "SELECT Email, PasswordFROM Users WHERE Email = ? AND Password = ?";
     const { email, password } = req.body;
 
     db.query(query, [email, password], (err, result) => {
@@ -42,7 +42,7 @@ app.post("/login", (req, res) => {
         if (result.length === 0)
             return res.status(404).json({ error: "No user found" });
 
-        const token = jwt.sign({ email, isAdmin }, process.env.TOKEN_PASS, {
+        const token = jwt.sign({ email }, process.env.TOKEN_PASS, {
             expiresIn: "12h",
         });
         res.cookie("key", token);
