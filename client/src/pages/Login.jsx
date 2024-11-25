@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Logo from "../components/Logo"
+import Logo from "../components/Logo";
 
 const Login = () => {
     axios.defaults.withCredentials = true;
-    const [user, setUser] = useState({ email: "", password: "" });
+    const [user, setUser] = useState({
+        email: "",
+        password: "",
+    });
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {

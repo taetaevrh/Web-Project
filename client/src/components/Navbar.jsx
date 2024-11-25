@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import axios from "axios";
 import { useEffect } from "react";
@@ -7,17 +7,17 @@ import { FaScrewdriverWrench } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-    const url = "http://localhost:3001/checktoken";
+    const checkTokenUrl = "http://localhost:3001/checktoken";
     const [email, setEmail] = useState("");
 
     useEffect(() => {
         const checkLogin = async () => {
             try {
-                const response = await axios.post(url);
+                const response = await axios.post(checkTokenUrl);
                 console.log(response);
                 setEmail(response.data.result.email);
             } catch (error) {
-                console.log(`error: ${error}`)
+                console.log(`error: ${error}`);
             }
         };
 
@@ -39,7 +39,14 @@ const Navbar = () => {
                         <IoHome className="text-xl" />
                         <p className="relative inline-block">
                             HOME
-                            <NavLink to="/" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`} />
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) =>
+                                    `${
+                                        isActive ? "bg-black" : "bg-white"
+                                    } absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`
+                                }
+                            />
                         </p>
                     </NavLink>
                 </li>
@@ -61,7 +68,14 @@ const Navbar = () => {
                     </svg>
                     <p className="relative inline-block">
                         MENU
-                        <NavLink to="/menu" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`} />
+                        <NavLink
+                            to="/menu"
+                            className={({ isActive }) =>
+                                `${
+                                    isActive ? "bg-black" : "bg-white"
+                                } absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`
+                            }
+                        />
                     </p>
                 </li>
                 <li>
@@ -90,7 +104,14 @@ const Navbar = () => {
                         </svg>
                         <p className="relative inline-block">
                             ABOUT US
-                            <NavLink to="/about-us" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`} />
+                            <NavLink
+                                to="/about-us"
+                                className={({ isActive }) =>
+                                    `${
+                                        isActive ? "bg-black" : "bg-white"
+                                    } absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`
+                                }
+                            />
                         </p>
                     </NavLink>
                 </li>
@@ -116,7 +137,14 @@ const Navbar = () => {
                         </svg>
                         <p className="relative inline-block">
                             CONTACT
-                            <NavLink to="/contact" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`} />
+                            <NavLink
+                                to="/contact"
+                                className={({ isActive }) =>
+                                    `${
+                                        isActive ? "bg-black" : "bg-white"
+                                    } absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`
+                                }
+                            />
                         </p>
                     </NavLink>
                 </li>
@@ -140,20 +168,28 @@ const Navbar = () => {
                                 <p className="relative inline-block">
                                     MANAGE
                                     {/* <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" /> */}
-                                    <NavLink to="/management" className={({isActive}) => `${isActive ? "bg-black" : "bg-white"} absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`}></NavLink>
+                                    <NavLink
+                                        to="/management"
+                                        className={({ isActive }) =>
+                                            `${
+                                                isActive
+                                                    ? "bg-black"
+                                                    : "bg-white"
+                                            } absolute left-0 bottom-0 h-[2px] w-full scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100`
+                                        }
+                                    ></NavLink>
                                 </p>
                             </div>
                         </NavLink>
                         {/* LOGOUT */}
                         <NavLink className="text-white flex gap-1 transition-all duration-300 delay-150 hover:scale-105 cursor-pointer group">
-                            {" "}
-                            <div className="flex items-center justify-center gap-1">
+                            <button className="flex items-center justify-center gap-1">
                                 <FaUser />
                                 <p className="relative inline-block">
                                     LOGOUT
                                     <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 delay-150 ease-in-out group-hover:scale-x-100" />
                                 </p>
-                            </div>
+                            </button>
                         </NavLink>
                     </div>
                 </>
