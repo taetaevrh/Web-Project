@@ -58,7 +58,7 @@ app.post("/checktoken", (req, res) => {
         if (!result)
             return res
                 .status(403)
-                .json({ message: "เปลี่ยน Token หาพ่อมึงหรอ" });
+                .json({ message: "เปลี่ยน Token ทำไมครับที่รัก" });
         return res.status(200).json({ message: "มึงผ่าน ยินดีด้วย", result: result });
     });
 });

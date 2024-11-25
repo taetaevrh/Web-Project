@@ -16,7 +16,9 @@ const Navbar = () => {
                 const response = await axios.post(url);
                 console.log(response);
                 setEmail(response.data.result.email);
-            } catch (error) {}
+            } catch (error) {
+                console.log(`error: ${error}`)
+            }
         };
 
         checkLogin();
