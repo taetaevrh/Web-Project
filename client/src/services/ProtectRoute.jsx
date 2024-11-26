@@ -13,10 +13,13 @@ const ProtectRoute = ({ children }) => {
         const checkLogin = async () => {
             try {
                 const response = await axios.post(url);
-                if (response.status === 200) {
+                if (response.data.result.isAdmin === 1) {
                     setIsAuthenticated(true);
+                } else if (response.data.result.isAdmin === 0) {
+                    setIsAuthenticated(false);
+                    navigate("/");
+                } else {
                 }
-
             } catch (error) {
                 setIsAuthenticated(false);
                 navigate("/login");

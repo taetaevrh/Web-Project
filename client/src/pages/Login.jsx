@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import Logo from "../components/Logo";
 
 const Login = () => {
@@ -19,10 +19,14 @@ const Login = () => {
                 "http://localhost:3001/login",
                 user
             );
-            console.log(response.data);
-            navigate("/management");
+            console.log(response.data.result);
+            if (response.data.result.isAdmin !== 1) {
+                navigate("/");
+            } else {
+                navigate("/management");
+            }
         } catch (err) {
-            console.log(err.response.data);
+            console.log(err.response);
         }
     };
 
@@ -39,9 +43,6 @@ const Login = () => {
             <div className="flex flex-col flex-grow items-center mt-10">
                 <Logo />
                 <div className="border bg-red-100 p-10 rounded-xl w-[500px]">
-                    <h3 className="flex text-3xl font-bold mb-9 justify-center">
-                        Administrator Login
-                    </h3>
                     <form>
                         {/* EMAIL */}
                         <section className="mb-5">
@@ -71,14 +72,25 @@ const Login = () => {
                                 onChange={handleChange}
                             />
                         </section>
-                        {/* LOGIN BUTTON */}
-                        <button
-                            type="submit"
-                            onClick={handleSubmit}
-                            className="flex text-white text-lg font-medium w-full bg-orange-500 justify-center items-center py-3 mt-16 rounded-md"
-                        >
-                            Login
-                        </button>
+                        <div className="mt-12">
+                            <div className="flex justify-end text-gray-600 gap-1 text-sm">
+                                Dont have account?
+                                <NavLink to="/register">
+                                    <button className="mr-4 mb-1 underline">
+                                        Register
+                                    </button>
+                                </NavLink>
+                            </div>
+
+                            {/* LOGIN BUTTON */}
+                            <button
+                                type="submit"
+                                onClick={handleSubmit}
+                                className="flex text-white text-lg font-medium w-full bg-orange-500 justify-center items-center py-3 rounded-md"
+                            >
+                                Login
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

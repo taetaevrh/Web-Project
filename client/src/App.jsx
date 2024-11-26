@@ -5,6 +5,8 @@ import Aboutus from "./pages/Aboutus";
 import Login from "./pages/Login";
 import Management from "./pages/Management";
 import ProtectRoute from "./services/ProtectRoute";
+import Menu from "./pages/Menu";
+import Register from "./pages/Register";
 
 export default function App() {
     return (
@@ -12,9 +14,11 @@ export default function App() {
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/menu" element={<Menu />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/about-us" element={<Aboutus />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                     <Route
                         path="/management"
                         element={

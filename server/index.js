@@ -32,9 +32,24 @@ app.use(
     })
 );
 
+app.post("/register", (req, res) => {
+    const query =
+        "INSERT INTO Users (Fname, Lname, DoB, Phone, Address, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    const { fname, lname, dob, phone, address, email, password } = req.body;
+
+    db.query(
+        query,
+        [fname, lname, dob, phone, address, email, password],
+        (err, result) => {
+            if (err) return res.status(500).json({ error: err });
+            res.json({ message: "Register successfully", result: result });
+        }
+    );
+});
+
 app.post("/login", (req, res) => {
     const query =
-        "SELECT Email, Password FROM Users WHERE Email = ? AND Password = ?";
+        "SELECT Email, Password, isAdmin FROM Users WHERE Email = ? AND Password = ?";
     const { email, password } = req.body;
 
     db.query(query, [email, password], (err, result) => {
@@ -42,11 +57,11 @@ app.post("/login", (req, res) => {
         if (result.length === 0)
             return res.status(404).json({ error: "No user found" });
 
-        const token = jwt.sign({ email }, process.env.TOKEN_PASS, {
+        const token = jwt.sign({ email, isAdmin: result[0].isAdmin }, process.env.TOKEN_PASS, {
             expiresIn: "12h",
         });
         res.cookie("key", token);
-        res.json({ message: "Generate key successfully!", email: email });
+        res.json({ message: "Generate key successfully!", result: result[0] });
     });
 });
 
