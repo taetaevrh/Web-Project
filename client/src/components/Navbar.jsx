@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import axios from "axios";
 import { useEffect } from "react";
@@ -7,24 +7,48 @@ import { FaScrewdriverWrench } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-    const url = "http://localhost:3001/checktoken";
+    const checkTokenUrl = "http://localhost:3001/checktoken";
+    const clearCookieUrl = "http://localhost:3001/logout";
     const [email, setEmail] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
+    const [loading, setLoading] = useState(true); // Track loading state
+    const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
 
     useEffect(() => {
         const checkLogin = async () => {
             try {
-                const response = await axios.post(url);
+                const response = await axios.post(checkTokenUrl);
                 console.log(response.data);
                 setEmail(response.data.result.email);
                 setIsAdmin(response.data.result.isAdmin);
             } catch (error) {
                 console.log(`error: ${error}`);
+                setEmail(false);
+            } finally {
+                setLoading(false); // Stop loading once the check is done
             }
         };
 
         checkLogin();
     }, []);
+
+    const handleLogout = async () => {
+        try {
+            const response = await axios.post(clearCookieUrl);
+            console.log(response.data.message);
+            setEmail(false);
+            setIsAdmin(0);
+            navigate("/");
+        } catch (error) {
+            console.log(`error: ${error}`);
+        }
+    };
+
+    if (loading) {
+        // Show a loading state while the token is being validated
+        return <div className="text-white">Loading...</div>;
+    }
 
     return (
         <nav className="flex justify-between px-5 bg-orange-600 py-2 top-0 sticky">
@@ -202,7 +226,10 @@ const Navbar = () => {
 
                         {/* LOGOUT */}
                         <NavLink className="text-white flex gap-1 transition-all duration-300 delay-150 hover:scale-105 cursor-pointer group">
-                            <button className="flex items-center justify-center gap-1">
+                            <button
+                                onClick={handleLogout}
+                                className="flex items-center justify-center gap-1"
+                            >
                                 <FaUser />
                                 <p className="relative inline-block">
                                     LOGOUT

@@ -12,22 +12,33 @@ const ProtectRoute = ({ children }) => {
     useEffect(() => {
         const checkLogin = async () => {
             try {
-                const response = await axios.post(url);
-                if (response.data.result.isAdmin === 1) {
+                const response = await axios.post(
+                    url,
+                    {},
+                    { withCredentials: true }
+                );
+                const isAdmin = response.data.result?.isAdmin;
+
+                if (isAdmin === 1) {
                     setIsAuthenticated(true);
-                } else if (response.data.result.isAdmin === 0) {
-                    setIsAuthenticated(false);
-                    navigate("/");
                 } else {
+                    setIsAuthenticated(false);
+                    navigate(isAdmin === 0 ? "/" : "/login");
                 }
             } catch (error) {
+                console.error("Authentication check failed:", error);
                 setIsAuthenticated(false);
                 navigate("/login");
             }
         };
 
         checkLogin();
-    }, []);
+    }, [navigate]);
+
+    if (isAuthenticated === null) {
+        // Loading state
+        return <div>Loading...</div>;
+    }
 
     return isAuthenticated ? children : null;
 };

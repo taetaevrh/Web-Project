@@ -19,7 +19,7 @@ const Login = () => {
                 "http://localhost:3001/login",
                 user
             );
-            console.log(response.data.result);
+            console.log(response.data.result[0]);
             if (response.data.result.isAdmin !== 1) {
                 navigate("/");
             } else {

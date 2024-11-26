@@ -82,8 +82,9 @@ app.post("/checktoken", (req, res) => {
     });
 });
 
-app.get("/logout", (req, res) => {
+app.post("/logout", (req, res) => {
     res.clearCookie("key");
+    res.json({ message: "Logged out successfully" });
 });
 
 app.listen(process.env.PORT, (err) => {
