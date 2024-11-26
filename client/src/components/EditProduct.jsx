@@ -44,6 +44,17 @@ const EditProduct = ({ activePID, setEditModal }) => {
         }
     };
 
+    const handleDelete = async () => {
+        try {
+            const response = await axios.delete(deleteProductUrl);
+            console.log(response.data.message);
+            setEditModal(false);
+            location.reload();
+        } catch (error) {
+            console.log(error.response);
+        }
+    };
+
     useEffect(() => {
         if (activePID) getProductData();
     }, [activePID]);
@@ -54,9 +65,12 @@ const EditProduct = ({ activePID, setEditModal }) => {
                 <div>
                     <div className="flex justify-between items-center mb-5">
                         <h1 className="text-3xl font-bold">Edit Product</h1>
-                        <div className="text-xl text-red-500">
+                        <button
+                            onClick={handleDelete}
+                            className="text-xl text-red-500"
+                        >
                             <FaTrashCan />
-                        </div>
+                        </button>
                     </div>
                     <div>
                         {product ? (

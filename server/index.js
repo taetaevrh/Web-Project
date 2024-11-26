@@ -173,12 +173,15 @@ app.put("/updateproduct/:id", (req, res) => {
 });
 
 app.delete("/deleteproduct/:id", (req, res) => {
-    const query = "DROP FROM Products WHERE PID = ?";
+    const query = "DELETE FROM Products WHERE PID = ?";
     const id = req.params.id;
 
     db.query(query, [id], (err, result) => {
         if (err) return res.status(500).json({ error: err });
-        res.json({ message: `Delete Product ID: ${id} succesfully` });
+        res.json({
+            message: `Delete Product ID: ${id} succesfully`,
+            result: result,
+        });
     });
 });
 

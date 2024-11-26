@@ -19,7 +19,6 @@ const AddProduct = ({ setModal }) => {
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
         console.log(addProduct);
         try {
             const response = await axios.post(

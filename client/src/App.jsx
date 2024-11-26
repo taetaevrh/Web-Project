@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
-import Aboutus from "./pages/Aboutus";
+import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import Management from "./pages/Management";
 import ProtectRoute from "./services/ProtectRoute";
@@ -16,7 +16,7 @@ export default function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/menu" element={<Menu />} />
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/about-us" element={<Aboutus />} />
+                    <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route
