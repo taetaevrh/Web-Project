@@ -200,7 +200,7 @@ const Menu = () => {
                         </form>
                     </div>
 
-                    <div className="grid grid-cols-4 gap-16 p-8 mx-auto mr-10">
+                    <div className="grid grid-cols-3 2xl:grid-cols-4 gap-16 p-8 mx-auto mr-10">
                         {filteredData.map((item) => (
                             <MenuCard
                                 key={item.UID}

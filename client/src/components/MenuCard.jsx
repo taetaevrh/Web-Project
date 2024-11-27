@@ -15,7 +15,7 @@ const MenuCard = (props) => {
             <img
                 src={props.Img}
                 alt={props.Pname}
-                className="w-full h-48 object-cover"
+                className="2xl:w-full h-48 object-cover"
             />
             <div className="p-5">
                 <h3 className="sriracha text-xl mb-2 text-center">
