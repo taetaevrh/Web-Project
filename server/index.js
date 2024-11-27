@@ -117,22 +117,13 @@ app.post("/adduser", (req, res) => {
     );
 });
 
-app.get("/getuser", (req, res) => {
-    const query = "SELECT * FROM Users";
-
-    db.query(query, (err, result) => {
-        if (err) return res.status(500).json({ error: err });
-        res.json({ message: "Get product data successfully", result: result });
-    });
-});
-
 app.get("/getproducts", (req, res) => {
     const query = "SELECT * FROM Products";
 
     db.query(query, (err, result) => {
         if (err) return res.status(500).json({ error: err });
         res.json({
-            message: "Get product all data successfully",
+            message: "Get all product data successfully",
             result: result,
         });
     });
@@ -180,6 +171,63 @@ app.delete("/deleteproduct/:id", (req, res) => {
         if (err) return res.status(500).json({ error: err });
         res.json({
             message: `Delete Product ID: ${id} succesfully`,
+            result: result,
+        });
+    });
+});
+
+app.get("/getusers", (req, res) => {
+    const query = "SELECT * FROM Users";
+
+    db.query(query, (err, result) => {
+        if (err) return res.status(500).json({ error: err });
+        res.json({ message: "Get all user data successfully", result: result });
+    });
+});
+
+app.get("/getuser/:id", (req, res) => {
+    const query = "SELECT * FROM Users WHERE UID = ?";
+    const id = req.params.id;
+
+    db.query(query, [id], (err, result) => {
+        if (err) return res.status(500).json({ error: err });
+        console.log(result);
+        console.log(id);
+        res.json({
+            message: `Get user data | ID: ${id} Name: ${result[0].Fname} ${result[0].Lname} | successfully`,
+            result: result,
+        });
+    });
+});
+
+app.put("/updateuser/:id", (req, res) => {
+    const query =
+        "UPDATE Users SET Fname = ?, Lname = ?, DoB = ?, Phone = ?, Email = ?, Password = ?, isAdmin = ? WHERE UID = ?";
+
+    const { Fname, Lname, DoB, Phone, Email, Password, isAdmin } = req.body;
+    const id = req.params.id;
+
+    db.query(
+        query,
+        [Fname, Lname, DoB, Phone, Email, Password, isAdmin, id],
+        (err, result) => {
+            if (err) return res.status(500).json({ error: err });
+            res.json({
+                message: `Update user | ID: ${id} Name: ${Fname} ${Lname} | successfully`,
+                result: result,
+            });
+        }
+    );
+});
+
+app.delete("/deleteuser/:id", (req, res) => {
+    const query = "DELETE FROM Users WHERE UID = ?";
+    const id = req.params.id;
+
+    db.query(query, [id], (err, result) => {
+        if (err) return res.status(500).json({ error: err });
+        res.json({
+            message: `Delete user ID: ${id} succesfully`,
             result: result,
         });
     });

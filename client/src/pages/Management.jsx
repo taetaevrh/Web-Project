@@ -12,7 +12,7 @@ import { FaXmark } from "react-icons/fa6";
 import { TfiWrite } from "react-icons/tfi";
 
 const Management = () => {
-    const getUserUrl = "http://localhost:3001/getuser";
+    const getUserUrl = "http://localhost:3001/getusers";
     const getProductUrl = "http://localhost:3001/getproducts";
     const [activeTab, setActiveTab] = useState("Product");
     const [Modal, setModal] = useState(false);
@@ -24,8 +24,19 @@ const Management = () => {
     const getUserData = async () => {
         try {
             const response = await axios.get(getUserUrl);
-            setUserData(response.data.result);
-            console.log(response)
+            const formattedUsers = response.data.result.map((user) => {
+                // Format the Date of Birth (DoB) to MM/DD/YYYY for display
+                if (user.DoB) {
+                    user.DoB = new Date(user.DoB).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                    });
+                }
+                return user;
+            });
+            setUserData(formattedUsers);
+            console.log(response);
             console.log(response.data.message);
             console.log(response.data.result);
         } catch (error) {
@@ -53,9 +64,15 @@ const Management = () => {
         <>
             {editModal ? (
                 activeTab === "Product" ? (
-                    <EditProduct activePID={activePID} setEditModal={setEditModal} />
+                    <EditProduct
+                        activePID={activePID}
+                        setEditModal={setEditModal}
+                    />
                 ) : (
-                    <EditUser setEditModal={setEditModal} />
+                    <EditUser
+                        activePID={activePID}
+                        setEditModal={setEditModal}
+                    />
                 )
             ) : (
                 ""
@@ -240,7 +257,7 @@ const Management = () => {
                                 {userData
                                     ? userData.map((item) => {
                                           return (
-                                              <tr>
+                                              <tr key={item.UID}>
                                                   <td className="px-2 text-center">
                                                       {item.UID}
                                                   </td>
@@ -275,15 +292,17 @@ const Management = () => {
                                                           )}
                                                       </div>
                                                   </td>
-
-                                                  <td className="px-2">
+                                                  <td className="py-3">
                                                       <div className="flex justify-center items-center">
                                                           <button
-                                                              onClick={() =>
+                                                              onClick={() => {
+                                                                  setActivePID(
+                                                                      item.UID
+                                                                  );
                                                                   setEditModal(
                                                                       true
-                                                                  )
-                                                              }
+                                                                  );
+                                                              }}
                                                           >
                                                               <TfiWrite />
                                                           </button>
