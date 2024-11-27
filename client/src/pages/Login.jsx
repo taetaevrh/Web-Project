@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
 import Logo from "../components/Logo";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
     axios.defaults.withCredentials = true;
@@ -10,15 +11,17 @@ const Login = () => {
         email: "",
         password: "",
     });
+    const [recaptchaToken, setRecaptchaToken] = useState(null);
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!recaptchaToken) return alert("Please complete the reCAPTCHA.");
         try {
-            const response = await axios.post(
-                "http://localhost:3001/login",
-                user
-            );
+            const response = await axios.post("http://localhost:3001/login", {
+                ...user,
+                recaptchaToken,
+            });
             console.log(response.data.result[0]);
             if (response.data.result.isAdmin !== 1) {
                 navigate("/");
@@ -27,6 +30,7 @@ const Login = () => {
             }
         } catch (err) {
             console.log(err.response);
+            return alert(err.response.data.error)
         }
     };
 
@@ -34,6 +38,10 @@ const Login = () => {
         const { name, value } = event.target;
         setUser((prev) => ({ ...prev, [name]: value }));
         console.log(user);
+    };
+
+    const handleRecaptchaChange = (token) => {
+        setRecaptchaToken(token); // Save the token when the user completes the reCAPTCHA
     };
 
     return (
@@ -72,6 +80,14 @@ const Login = () => {
                                 onChange={handleChange}
                             />
                         </section>
+                        {/* reCAPTCHA */}
+                        <div className="mt-6 flex justify-center">
+                            <ReCAPTCHA
+                                sitekey="6Ld17YsqAAAAAJdbg_lczBfhcrv9KJdFnYG7Cfb_" // Replace with your site key from Google reCAPTCHA
+                                onChange={handleRecaptchaChange}
+                                onExpired={() => setRecaptchaToken(null)} // Reset token if expired
+                            />
+                        </div>
                         <div className="mt-12">
                             {/* LOGIN BUTTON */}
                             <button

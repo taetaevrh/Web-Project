@@ -11,6 +11,7 @@ const Register = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (register.password !== register.confirmpassword) return alert("Confirm password is not the same as password.")
         try {
             const response = await axios.post(
                 "http://localhost:3001/register",

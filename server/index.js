@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
+const axios = require("axios")
 dotenv.config();
 
 // Start server
@@ -47,10 +48,22 @@ app.post("/register", (req, res) => {
     );
 });
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
     const query =
         "SELECT Email, Password, isAdmin FROM Users WHERE Email = ? AND Password = ?";
-    const { email, password } = req.body;
+    const { email, password, recaptchaToken } = req.body;
+
+    try {
+        const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${recaptchaToken}`;
+        const {data} = await axios.post(verifyURL)
+
+        if (!data.success) {
+            return res.status(400).json({ error: "Invalid reCAPTCHA token" });
+        }
+    } catch (error) {
+        console.error("reCAPTCHA validation error:", error);
+        return res.status(500).json({ error: "reCAPTCHA validation failed" });
+    }
 
     db.query(query, [email, password], (err, result) => {
         if (err) return res.status(500).json({ error: err });
