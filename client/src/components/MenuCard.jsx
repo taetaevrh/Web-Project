@@ -11,7 +11,10 @@ const MenuCard = (props) => {
     };
 
     return (
-        <div className="bg-gray-100 rounded-lg shadow-md overflow-hidden cursor-pointer" onClick={handleClick}>
+        <div
+            className="bg-gray-100 rounded-lg shadow-md overflow-hidden cursor-pointer"
+            onClick={handleClick}
+        >
             <img
                 src={props.Img}
                 alt={props.Pname}

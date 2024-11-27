@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-const axios = require("axios")
+const axios = require("axios");
 dotenv.config();
 
 // Start server
@@ -55,7 +55,7 @@ app.post("/login", async (req, res) => {
 
     try {
         const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${recaptchaToken}`;
-        const {data} = await axios.post(verifyURL)
+        const { data } = await axios.post(verifyURL);
 
         if (!data.success) {
             return res.status(400).json({ error: "Invalid reCAPTCHA token" });
