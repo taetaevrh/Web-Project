@@ -274,7 +274,10 @@ const Menu = () => {
                     {productData
                         ? productData.map((item) => (
                               <MenuCard
+                                  key={item.UID}
+                                  id={item.UID}
                                   Pname={item.Pname}
+                                  Desp={item.Desp}
                                   Star={Number(item.Star)}
                                   Price={item.Price}
                                   Spice={item.Spice}

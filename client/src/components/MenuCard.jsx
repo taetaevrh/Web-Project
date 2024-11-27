@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { GiChiliPepper } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 
 const MenuCard = (props) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/product/${props.id}`, { state: props });
+    };
 
     return (
-        <div className="bg-gray-100 rounded-lg shadow-md overflow-hidden">
-            <img src={props.Img} alt={props.Pname} className="w-full h-48 object-cover" />
+        <div className="bg-gray-100 rounded-lg shadow-md overflow-hidden cursor-pointer" onClick={handleClick}>
+            <img
+                src={props.Img}
+                alt={props.Pname}
+                className="w-full h-48 object-cover"
+            />
             <div className="p-5">
-                <h3 className="sriracha text-xl mb-2 text-center">{props.Pname}</h3>
+                <h3 className="sriracha text-xl mb-2 text-center">
+                    {props.Pname}
+                </h3>
                 <div className="flex items-center mb-2">
                     <span className="text-yellow-500 flex items-center">
                         {Array(props.Star)
