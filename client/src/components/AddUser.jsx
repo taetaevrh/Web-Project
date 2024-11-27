@@ -20,8 +20,7 @@ const AddUser = ({ setModal }) => {
         console.log(addUser);
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async () => {
         console.log(addUser)
         try {
             const response = await axios.post(
@@ -30,6 +29,7 @@ const AddUser = ({ setModal }) => {
             );
             console.log(response.data.message);
             setModal(false);
+            location.reload("/management");
         } catch (err) {
             console.log(err.response);
         }

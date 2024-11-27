@@ -35,8 +35,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
         console.log(user);
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async () => {
         console.log(user);
         try {
             const response = await axios.put(

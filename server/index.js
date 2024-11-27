@@ -93,7 +93,7 @@ app.post("/logout", (req, res) => {
 
 app.post("/addproduct", (req, res) => {
     const query =
-        "INSERT INTO Products (Pname, Desp, Price, Spice, Star, Img) VALUES (?, ?, ?, ?, ?, ?)";
+        "INSERT INTO Products (Pname, Desp, Price, Star, Spice, Img) VALUES (?, ?, ?, ?, ?, ?)";
     const { pname, desp, price, star, spice, img } = req.body;
     db.query(query, [pname, desp, price, star, spice, img], (err, result) => {
         if (err) return res.status(500).json({ error: err });
@@ -177,7 +177,8 @@ app.delete("/deleteproduct/:id", (req, res) => {
 });
 
 app.get("/getusers", (req, res) => {
-    const query = "SELECT * FROM Users";
+    const query =
+        "SELECT UID, Fname, Lname, DATE_FORMAT(DoB, '%Y-%m-%d') AS DoB, Phone, Address, Email, Password, isAdmin FROM Users";
 
     db.query(query, (err, result) => {
         if (err) return res.status(500).json({ error: err });
@@ -186,7 +187,8 @@ app.get("/getusers", (req, res) => {
 });
 
 app.get("/getuser/:id", (req, res) => {
-    const query = "SELECT * FROM Users WHERE UID = ?";
+    const query =
+        "SELECT UID, Fname, Lname, DATE_FORMAT(DoB, '%Y-%m-%d') AS DoB, Phone, Address, Email, Password, isAdmin FROM Users WHERE UID = ?";
     const id = req.params.id;
 
     db.query(query, [id], (err, result) => {

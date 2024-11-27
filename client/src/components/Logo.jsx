@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = () => {
+const Logo = () => {
     return (
         <>
             <div className="gap-5 flex items-center justify-center py-2">
@@ -13,4 +13,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default Logo;

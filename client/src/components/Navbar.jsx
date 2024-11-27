@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { FaScrewdriverWrench } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
+import { FaBookOpen } from "react-icons/fa";
 
 const Navbar = () => {
     const checkTokenUrl = "http://localhost:3001/checktoken";
@@ -51,7 +52,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="flex justify-between px-5 bg-orange-600 py-2 top-0 sticky">
+        <nav className="flex justify-between px-5 bg-orange-600 py-2 top-0 sticky z-10">
             <ul className="flex gap-5">
                 {/* HOME */}
                 <li>
@@ -82,23 +83,13 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to="/menu"
-                        className="flex gap-1 text-white transition-all duration-300 delay-150 hover:scale-105 cursor-pointer group"
+                        className={({ isActive }) =>
+                            `${
+                                isActive ? "font-bold text-black" : "text-white"
+                            } flex gap-1 transition-all duration-300 delay-150 hover:scale-105 cursor-pointer group`
+                        }
                     >
-                        <svg
-                            className="w-6 h-6 text-white dark:text-white"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={24}
-                            height={24}
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M11 4.717c-2.286-.58-4.16-.756-7.045-.71A1.99 1.99 0 0 0 2 6v11c0 1.133.934 2.022 2.044 2.007 2.759-.038 4.5.16 6.956.791V4.717Zm2 15.081c2.456-.631 4.198-.829 6.956-.791A2.013 2.013 0 0 0 22 16.999V6a1.99 1.99 0 0 0-1.955-1.993c-2.885-.046-4.76.13-7.045.71v15.081Z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
+                        <FaBookOpen className="text-xl" />
                         <p className="relative inline-block">
                             MENU
                             <NavLink
