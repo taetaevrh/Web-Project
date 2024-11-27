@@ -73,7 +73,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
                     </div>
                     <div>
                         {user ? (
-                            <form className="grid grid-cols-2 2xl:gridc-cols-1 gap-5">
+                            <form className="grid grid-cols-2 gap-5">
                                 {/* FIRST NAME */}
                                 <label>
                                     First Name
@@ -127,19 +127,6 @@ const EditProduct = ({ activePID, setEditModal }) => {
                                     />
                                 </label>
 
-                                {/* ADDRESS */}
-                                <label>
-                                    Address
-                                    <textarea
-                                        className={`${inputbox} resize-none`}
-                                        type="text"
-                                        value={user.Address || ""}
-                                        rows="2"
-                                        name="Address"
-                                        onChange={handleChange}
-                                    />
-                                </label>
-
                                 {/* EMAIL */}
                                 <label>
                                     Email
@@ -166,6 +153,19 @@ const EditProduct = ({ activePID, setEditModal }) => {
                                     />
                                 </label>
 
+                                {/* ADDRESS */}
+                                <label>
+                                    Address
+                                    <textarea
+                                        className={`${inputbox} resize-none`}
+                                        type="text"
+                                        value={user.Address || ""}
+                                        rows="2"
+                                        name="Address"
+                                        onChange={handleChange}
+                                    />
+                                </label>
+
                                 {/* IS ADMIN */}
                                 <label className="flex flex-col gap-2">
                                     Is Admin ?
@@ -180,7 +180,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
                                     </select>
                                 </label>
 
-                                <div className="flex justify-between mt-7 2xl:col-span-auto col-span-full px-5 sxl:px-0">
+                                <div className="flex justify-between mt-7 col-span-full px-5">
                                     <button
                                         onClick={() => setEditModal(false)}
                                         className="px-3 py-1 text-lg rounded-lg font-medium bg-gray-300"

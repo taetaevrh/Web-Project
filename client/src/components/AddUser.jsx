@@ -27,8 +27,7 @@ const AddUser = ({ setModal }) => {
             );
             setModal(false);
             location.reload("/management");
-        } catch (err) {
-        }
+        } catch (err) {}
     };
 
     return (
@@ -37,7 +36,7 @@ const AddUser = ({ setModal }) => {
                 <div className="">
                     <h1 className="text-3xl font-bold mb-5">Add User</h1>
                     <div>
-                        <form className="grid grid-cols-2 2xl:grid-cols-1 gap-5">
+                        <form className="grid grid-cols-2 gap-5">
                             {/* FNAME */}
                             <label>
                                 First Name
@@ -87,18 +86,6 @@ const AddUser = ({ setModal }) => {
                                 />
                             </label>
 
-                            {/* ADDRESS */}
-                            <label>
-                                Address
-                                <textarea
-                                    className={`${inputbox} resize-none`}
-                                    type="text"
-                                    rows="2"
-                                    name="address"
-                                    onChange={handleChange}
-                                />
-                            </label>
-
                             {/* EMAIL */}
                             <label>
                                 Email
@@ -123,16 +110,32 @@ const AddUser = ({ setModal }) => {
                                 />
                             </label>
 
+                            {/* ADDRESS */}
+                            <label>
+                                Address
+                                <textarea
+                                    className={`${inputbox} resize-none`}
+                                    type="text"
+                                    rows="2"
+                                    name="address"
+                                    onChange={handleChange}
+                                />
+                            </label>
+
                             {/* IS ADMIN */}
                             <label className="flex flex-col gap-2">
                                 Is Admin ?
-                                <select className={inputbox} name="isAdmin" onChange={handleChange}>
+                                <select
+                                    className={inputbox}
+                                    name="isAdmin"
+                                    onChange={handleChange}
+                                >
                                     <option value={0}>No</option>
                                     <option value={1}>Yes</option>
                                 </select>
                             </label>
 
-                            <div className="flex justify-between mt-7 col-span-full px-5 2xl:col-span-autop 2xl:px-0">
+                            <div className="flex justify-between mt-7 col-span-full px-5">
                                 <button
                                     onClick={() => setModal(false)}
                                     className="px-3 py-1 text-lg rounded-lg font-medium bg-gray-300"
