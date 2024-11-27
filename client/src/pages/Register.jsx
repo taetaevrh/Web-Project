@@ -17,7 +17,6 @@ const Register = () => {
                 "http://localhost:3001/register",
                 register
             );
-            console.log(response.data);
             navigate("/login");
         } catch (err) {
             console.log(err.response.data);
@@ -27,7 +26,6 @@ const Register = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setRegister((prev) => ({ ...prev, [name]: value }));
-        console.log(register);
     };
 
     const inputbox = "border w-full px-5 py-2 rounded-md placeholder:text-sm";

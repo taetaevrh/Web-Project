@@ -20,10 +20,8 @@ const EditProduct = ({ activePID, setEditModal }) => {
                 }
                 setUser(userData);
             } else {
-                console.log("User not found");
+                return alert("No user found");
             }
-            console.log(response.data.message);
-            console.log(response.data.result[0]);
         } catch (error) {
             console.log(error.response);
         }
@@ -32,18 +30,14 @@ const EditProduct = ({ activePID, setEditModal }) => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setUser((prev) => ({ ...prev, [name]: value }));
-        console.log(user);
     };
 
     const handleSubmit = async () => {
-        console.log(user);
         try {
             const response = await axios.put(
                 `http://localhost:3001/updateuser/${activePID}`,
                 user
             );
-            console.log(response.data.message);
-            console.log(response.data.result);
             setEditModal(false);
         } catch (err) {
             console.log(err.response);
@@ -53,7 +47,6 @@ const EditProduct = ({ activePID, setEditModal }) => {
     const handleDelete = async () => {
         try {
             const response = await axios.delete(deleteUserUrl);
-            console.log(response.data.message);
             setEditModal(false);
             location.reload();
         } catch (error) {

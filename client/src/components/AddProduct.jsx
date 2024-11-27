@@ -15,20 +15,16 @@ const AddProduct = ({ setModal }) => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setAddProduct((prev) => ({ ...prev, [name]: value }));
-        console.log(addProduct);
     };
 
     const handleSubmit = async (event) => {
-        console.log(addProduct);
         try {
             const response = await axios.post(
                 "http://localhost:3001/addproduct",
                 addProduct
             );
-            console.log(response.data.message);
             setModal(false);
         } catch (err) {
-            console.log(err.response);
         }
     };
 

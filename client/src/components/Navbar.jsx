@@ -20,7 +20,6 @@ const Navbar = () => {
         const checkLogin = async () => {
             try {
                 const response = await axios.post(checkTokenUrl);
-                console.log(response.data);
                 setEmail(response.data.result.email);
                 setIsAdmin(response.data.result.isAdmin);
             } catch (error) {
@@ -37,7 +36,6 @@ const Navbar = () => {
     const handleLogout = async () => {
         try {
             const response = await axios.post(clearCookieUrl);
-            console.log(response.data.message);
             setEmail(false);
             setIsAdmin(0);
             navigate("/");

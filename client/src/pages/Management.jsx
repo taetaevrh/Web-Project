@@ -36,9 +36,6 @@ const Management = () => {
                 return user;
             });
             setUserData(formattedUsers);
-            console.log(response);
-            console.log(response.data.message);
-            console.log(response.data.result);
         } catch (error) {
             console.log(error.response);
         }
@@ -48,8 +45,6 @@ const Management = () => {
         try {
             const response = await axios.get(getProductUrl);
             setProductData(response.data.result);
-            console.log(response.data.message);
-            console.log(response.data.result);
         } catch (error) {
             console.log(error.response);
         }

@@ -22,14 +22,12 @@ const Login = () => {
                 ...user,
                 recaptchaToken,
             });
-            console.log(response.data.result[0]);
             if (response.data.result.isAdmin !== 1) {
                 navigate("/");
             } else {
                 navigate("/management");
             }
         } catch (err) {
-            console.log(err.response);
             return alert(err.response.data.error)
         }
     };
@@ -37,7 +35,6 @@ const Login = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setUser((prev) => ({ ...prev, [name]: value }));
-        console.log(user);
     };
 
     const handleRecaptchaChange = (token) => {

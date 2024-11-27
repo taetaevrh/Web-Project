@@ -17,21 +17,17 @@ const AddUser = ({ setModal }) => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setAddUser((prev) => ({ ...prev, [name]: value }));
-        console.log(addUser);
     };
 
     const handleSubmit = async () => {
-        console.log(addUser)
         try {
             const response = await axios.post(
                 "http://localhost:3001/adduser",
                 addUser
             );
-            console.log(response.data.message);
             setModal(false);
             location.reload("/management");
         } catch (err) {
-            console.log(err.response);
         }
     };
 

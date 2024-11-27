@@ -119,7 +119,6 @@ app.post("/adduser", (req, res) => {
         "INSERT INTO Users (Fname, Lname, DoB, Phone, Address, Email, Password, isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     const { fname, lname, dob, phone, address, email, password, isAdmin } =
         req.body;
-    console.log(req.body);
     db.query(
         query,
         [fname, lname, dob, phone, address, email, password, isAdmin],
@@ -148,8 +147,6 @@ app.get("/getproduct/:id", (req, res) => {
 
     db.query(query, [id], (err, result) => {
         if (err) return res.status(500).json({ error: err });
-        console.log(result);
-        console.log(id);
         res.json({
             message: `Get product data | ID: ${id} Name: ${result[0].Pname} | successfully`,
             result: result,
@@ -206,8 +203,6 @@ app.get("/getuser/:id", (req, res) => {
 
     db.query(query, [id], (err, result) => {
         if (err) return res.status(500).json({ error: err });
-        console.log(result);
-        console.log(id);
         res.json({
             message: `Get user data | ID: ${id} Name: ${result[0].Fname} ${result[0].Lname} | successfully`,
             result: result,

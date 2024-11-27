@@ -14,10 +14,8 @@ const EditProduct = ({ activePID, setEditModal }) => {
             if (response.data.result.length > 0) {
                 setProduct(response.data.result[0]);
             } else {
-                console.log("Product not found");
+                return alert("No products found");
             }
-            console.log(response.data.message);
-            console.log(response.data.result[0]);
         } catch (error) {
             console.log(error.response);
         }
@@ -26,18 +24,14 @@ const EditProduct = ({ activePID, setEditModal }) => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setProduct((prev) => ({ ...prev, [name]: value }));
-        console.log(product);
     };
 
     const handleSubmit = async () => {
-        console.log(product);
         try {
             const response = await axios.put(
                 `http://localhost:3001/updateproduct/${activePID}`,
                 product
             );
-            console.log(response.data.message);
-            console.log(response.data.result);
             setEditModal(false);
         } catch (err) {
             console.log(err.response);
@@ -47,7 +41,6 @@ const EditProduct = ({ activePID, setEditModal }) => {
     const handleDelete = async () => {
         try {
             const response = await axios.delete(deleteProductUrl);
-            console.log(response.data.message);
             setEditModal(false);
             location.reload();
         } catch (error) {
