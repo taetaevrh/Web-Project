@@ -1,7 +1,12 @@
 import React from "react";
-import { FaSquareFacebook, FaSquareInstagram } from "react-icons/fa6";
+import {
+    FaSquareFacebook,
+    FaSquareInstagram,
+    FaVk,
+    FaHandMiddleFinger,
+} from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
-import propTypes from "prop-types";
+import { SiOnlyfans } from "react-icons/si";
 
 const Contactcard_icon = (props) => {
     return (
@@ -45,14 +50,20 @@ const Contactcard_icon = (props) => {
             <a href={props.mlink} target="_blank">
                 <IoIosMail className="text-4xl" />
             </a>
+
+            {props.olink === "none" ? (
+                <SiOnlyfans className="text-4xl text-blue-400" />
+            ) : (
+                ""
+            )}
+
+            {props.vlink === "none" ? (
+                <FaVk className="text-4xl text-blue-500" />
+            ) : (
+                ""
+            )}
         </>
     );
 };
-
-Contactcard_icon.propTypes = {
-    flink: propTypes.string,
-    ilink: propTypes.string,
-    mlink: propTypes.string,
-}
 
 export default Contactcard_icon;

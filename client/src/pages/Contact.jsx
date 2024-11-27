@@ -16,7 +16,7 @@ const Contact = () => {
                     alt="contact-background"
                 />
                 <p className="absolute top-0 w-full h-full flex justify-center items-center">
-                    <span className="px-10 py-4 bg-gray-600 rounded-xl text-white font-bold text-5xl">
+                    <span className="sriracha px-10 py-4 bg-gray-600 rounded-xl text-white font-bold text-5xl">
                         Contact
                     </span>
                 </p>
@@ -28,15 +28,19 @@ const Contact = () => {
                     {/* YEEN CARD */}
                     <Contactcard
                         name="Panaiyakorn Phanyaichada"
+                        sid="6687027"
                         img="/img/IMG_3895.png"
                         img_alt="yeen-pic"
                         flink="https://www.facebook.com/yeen.panaiyakorn"
                         ilink="https://www.instagram.com/yeenzx/"
                         mlink="https://mail.google.com/mail/?view=cm&to=panaiyakorn.pha@student.mahidol.edu"
+                        olink="none"
+                        vlink="none"
                     />
                     {/* JA CARD */}
                     <Contactcard
                         name="Putinan Techavataporn"
+                        sid="6687038"
                         img="/img/IMG_3909.png"
                         img_alt="ja-pic"
                         flink="https://www.facebook.com/profile.php?id=100011714463537"
@@ -47,6 +51,7 @@ const Contact = () => {
                     {/* TAETAE CARD */}
                     <Contactcard
                         name="Varich Maleevan"
+                        sid="6687097"
                         img="/img/taetae.jpg"
                         img_alt="taetae-pic"
                         flink="https://www.facebook.com/taetae2004"
@@ -57,7 +62,8 @@ const Contact = () => {
                     {/* IM CARD */}
                     <Contactcard
                         name="Siriprapas Kimpee"
-                        img=""
+                        sid="6687098"
+                        img="/img/im.png"
                         img_alt="im-pic"
                         flink="https://www.facebook.com/siriprapas.kimpee"
                         ilink="https://www.instagram.com/iimmyyy__/"

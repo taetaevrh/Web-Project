@@ -9,7 +9,7 @@ const AboutUs = () => {
             <Navbar />
 
             <div className="relative flex-grow bg-gradient-to-r from-neutral-800 via-zinc-950 to-black">
-                <h1 className="text-white font-bold text-6xl flex justify-center mt-[80px]">
+                <h1 className="sriracha text-white font-bold text-6xl flex justify-center mt-[80px]">
                     About Us
                 </h1>
                 <img
@@ -20,10 +20,10 @@ const AboutUs = () => {
                 {/* HISTORY */}
                 <div className="absolute right-0 flex justify-end top-1/3 w-[50%]">
                     <div className="text-white mr-5">
-                        <h1 className="flex justify-end font-bold text-5xl mb-7">
+                        <h1 className="sriracha flex justify-end font-bold text-5xl mb-7">
                             History
                         </h1>
-                        <p className="thai-text text-balance text-right text-lg">
+                        <p className="sriracha text-balance text-right text-lg">
                             Sasuke Ramen
                             คือร้านอาหารที่เริ่มต้นจากร้านราเมงขนาดเล็กในชุมชน
                             โดยมีจุดเด่นที่น้ำซุปสูตรพิเศษหลากหลายสูตร

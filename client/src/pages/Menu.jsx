@@ -75,7 +75,7 @@ const Menu = () => {
                             alt="Sasuke-Pic"
                             width="25px"
                         />
-                        <h1 className="logo-text text-5xl font-bold mt-6">
+                        <h1 className="yanone text-5xl font-bold mt-6">
                             Sasuke Ramen
                         </h1>
                     </div>

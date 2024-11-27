@@ -1,6 +1,5 @@
 import React from "react";
 import Contactcard_icon from "./Contactcard_icon";
-import propTypes from "prop-types";
 
 const Contactcard = (props) => {
     return (
@@ -17,13 +16,24 @@ const Contactcard = (props) => {
                 {/* NAME */}
                 <div>
                     <h1 className="font-bold text-xl mt-6">{props.name}</h1>
+                    <h3 className="font-medium text-lg ml-1">{props.sid}</h3>
                     {/* ICON */}
-                    <div className="flex gap-2 ml-2 mt-3">
-                        <Contactcard_icon
-                            flink={props.flink}
-                            ilink={props.ilink}
-                            mlink={props.mlink}
-                        />
+                    <div className="flex gap-2 ml-2 mt-1 items-center">
+                        {props.name === "Panaiyakorn Phanyaichada" || props.name === "Putinan Techavataporn" ? (
+                            <Contactcard_icon
+                                flink={props.flink}
+                                ilink={props.ilink}
+                                mlink={props.mlink}
+                                olink={props.olink}
+                                vlink={props.vlink}
+                            />
+                        ) : (
+                            <Contactcard_icon
+                                flink={props.flink}
+                                ilink={props.ilink}
+                                mlink={props.mlink}
+                            />
+                        )}
                     </div>
                 </div>
             </div>
