@@ -42,7 +42,7 @@ const Login = () => {
 
             <div className="flex flex-col flex-grow items-center mt-10">
                 <Logo />
-                <div className="border bg-red-100 p-10 rounded-xl w-[500px]">
+                <div className="border bg-red-100 p-8 rounded-xl w-[500px]">
                     <form>
                         {/* EMAIL */}
                         <section className="mb-5">
@@ -73,15 +73,6 @@ const Login = () => {
                             />
                         </section>
                         <div className="mt-12">
-                            <div className="flex justify-end text-gray-600 gap-1 text-sm">
-                                Dont have account?
-                                <NavLink to="/register">
-                                    <button className="mr-4 mb-1 underline">
-                                        Register
-                                    </button>
-                                </NavLink>
-                            </div>
-
                             {/* LOGIN BUTTON */}
                             <button
                                 type="submit"
@@ -92,6 +83,14 @@ const Login = () => {
                             </button>
                         </div>
                     </form>
+                    <div className="flex justify-end text-gray-600 gap-1 text-sm mt-2">
+                        Dont have account?
+                        <NavLink to="/register">
+                            <button className="mr-2 mb-1 underline">
+                                Register
+                            </button>
+                        </NavLink>
+                    </div>
                 </div>
             </div>
         </div>
