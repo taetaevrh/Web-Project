@@ -81,7 +81,7 @@ const Menu = () => {
                     </div>
                     <div className="flex items-center gap-3">
                         <input
-                            className="rounded-full my-5 px-5 w-[1200px] py-2 border border-gray-300"
+                            className="rounded-full my-5 px-5 w-[1000px] 2xl:w-[1200px] py-2 border border-gray-300"
                             type="text"
                             name="search"
                             placeholder="Search"
