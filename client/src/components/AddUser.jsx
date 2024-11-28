@@ -14,11 +14,13 @@ const AddUser = ({ setModal }) => {
         isAdmin: 0,
     });
 
+    // Update data if target has changed
     const handleChange = (event) => {
         const { name, value } = event.target;
         setAddUser((prev) => ({ ...prev, [name]: value }));
     };
 
+    // Send data to backend
     const handleSubmit = async () => {
         try {
             const response = await axios.post(
@@ -135,6 +137,7 @@ const AddUser = ({ setModal }) => {
                                 </select>
                             </label>
 
+                            {/* BUTTON */}
                             <div className="flex justify-between mt-7 col-span-full px-5">
                                 <button
                                     onClick={() => setModal(false)}

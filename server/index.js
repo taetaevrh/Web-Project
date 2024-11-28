@@ -17,6 +17,7 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME,
 });
 
+// Connect to database
 db.connect((err) => {
     if (err) throw err;
     console.log(`Database Connected on : ${process.env.DB_NAME}`);
@@ -33,6 +34,7 @@ app.use(
     })
 );
 
+// User register
 app.post("/register", (req, res) => {
     const query =
         "INSERT INTO Users (Fname, Lname, DoB, Phone, Address, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -48,6 +50,7 @@ app.post("/register", (req, res) => {
     );
 });
 
+// User register & generate token
 app.post("/login", async (req, res) => {
     const query =
         "SELECT Email, Password, isAdmin FROM Users WHERE Email = ? AND Password = ?";
@@ -82,6 +85,7 @@ app.post("/login", async (req, res) => {
     });
 });
 
+// Check token
 app.post("/checktoken", (req, res) => {
     const token = req.cookies.key;
 
@@ -99,11 +103,13 @@ app.post("/checktoken", (req, res) => {
     });
 });
 
+// User logout
 app.post("/logout", (req, res) => {
     res.clearCookie("key");
     res.json({ message: "Logged out successfully" });
 });
 
+// Add product
 app.post("/addproduct", (req, res) => {
     const query =
         "INSERT INTO Products (Pname, Desp, Price, Star, Spice, Img) VALUES (?, ?, ?, ?, ?, ?)";
@@ -114,6 +120,7 @@ app.post("/addproduct", (req, res) => {
     });
 });
 
+// Add user
 app.post("/adduser", (req, res) => {
     const query =
         "INSERT INTO Users (Fname, Lname, DoB, Phone, Address, Email, Password, isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -129,6 +136,7 @@ app.post("/adduser", (req, res) => {
     );
 });
 
+// Get all products
 app.get("/getproducts", (req, res) => {
     const query = "SELECT * FROM Products";
 
@@ -141,6 +149,7 @@ app.get("/getproducts", (req, res) => {
     });
 });
 
+// Get product by ID
 app.get("/getproduct/:id", (req, res) => {
     const query = "SELECT * FROM Products WHERE PID = ?";
     const id = req.params.id;
@@ -154,6 +163,7 @@ app.get("/getproduct/:id", (req, res) => {
     });
 });
 
+// Update product by ID
 app.put("/updateproduct/:id", (req, res) => {
     const query =
         "UPDATE Products SET Pname = ?, Desp = ?, Price = ?, Star = ?, Spice = ?, Img = ? WHERE PID = ?";
@@ -173,6 +183,7 @@ app.put("/updateproduct/:id", (req, res) => {
     );
 });
 
+// Delete product by ID
 app.delete("/deleteproduct/:id", (req, res) => {
     const query = "DELETE FROM Products WHERE PID = ?";
     const id = req.params.id;
@@ -186,6 +197,7 @@ app.delete("/deleteproduct/:id", (req, res) => {
     });
 });
 
+// Get all users
 app.get("/getusers", (req, res) => {
     const query =
         "SELECT UID, Fname, Lname, DATE_FORMAT(DoB, '%Y-%m-%d') AS DoB, Phone, Address, Email, Password, isAdmin FROM Users";
@@ -196,6 +208,7 @@ app.get("/getusers", (req, res) => {
     });
 });
 
+// Get user by ID
 app.get("/getuser/:id", (req, res) => {
     const query =
         "SELECT UID, Fname, Lname, DATE_FORMAT(DoB, '%Y-%m-%d') AS DoB, Phone, Address, Email, Password, isAdmin FROM Users WHERE UID = ?";
@@ -210,6 +223,7 @@ app.get("/getuser/:id", (req, res) => {
     });
 });
 
+// Update user by ID
 app.put("/updateuser/:id", (req, res) => {
     const query =
         "UPDATE Users SET Fname = ?, Lname = ?, DoB = ?, Phone = ?, Email = ?, Password = ?, isAdmin = ? WHERE UID = ?";
@@ -230,6 +244,7 @@ app.put("/updateuser/:id", (req, res) => {
     );
 });
 
+// Delete user by ID
 app.delete("/deleteuser/:id", (req, res) => {
     const query = "DELETE FROM Users WHERE UID = ?";
     const id = req.params.id;

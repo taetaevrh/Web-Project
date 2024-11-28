@@ -18,6 +18,7 @@ const Menu = () => {
         maxValue: 200,
     });
 
+    // Get data from backend
     const getProductData = async () => {
         try {
             const response = await axios.get(
@@ -33,10 +34,12 @@ const Menu = () => {
         }
     };
 
+    // Run function(s) when open the page
     useEffect(() => {
         getProductData();
     }, []);
 
+    // Run function(s) when data in condition has changed
     useEffect(() => {
         const filtered = productData.filter((item) => {
             const matchesSearch = filter.search
@@ -56,6 +59,7 @@ const Menu = () => {
         setFilteredData(filtered);
     }, [filter, productData]);
 
+    //Get data from backend
     const handleFilterChange = (event) => {
         const { name, value, type, checked } = event.target;
         setFilter((prev) => ({

@@ -50,14 +50,18 @@ const ProductDetail = () => {
                                 ความเผ็ด
                             </strong>
                             <div className="flex text-red-500">
-                                {state.Spice > 0 ? Array(state.Spice)
-                                    .fill(0)
-                                    .map((_, index) => (
-                                        <span key={index} className="text-xl">
-                                            <GiChiliPepper
-                                            />
-                                        </span>
-                                    )) : "Not Spicy"}
+                                {state.Spice > 0
+                                    ? Array(state.Spice)
+                                          .fill(0)
+                                          .map((_, index) => (
+                                              <span
+                                                  key={index}
+                                                  className="text-xl"
+                                              >
+                                                  <GiChiliPepper />
+                                              </span>
+                                          ))
+                                    : "Not Spicy"}
                             </div>
                         </div>
                     </div>

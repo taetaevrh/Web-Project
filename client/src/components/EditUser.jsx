@@ -8,6 +8,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
     const inputbox = "border w-full px-5 py-2 rounded-md placeholder:text-sm";
     const [user, setUser] = useState(null);
 
+    // Get data from backend
     const getUserData = async () => {
         try {
             const response = await axios.get(getUserUrl);
@@ -27,11 +28,13 @@ const EditProduct = ({ activePID, setEditModal }) => {
         }
     };
 
+    // Update data if target has changed
     const handleChange = (event) => {
         const { name, value } = event.target;
         setUser((prev) => ({ ...prev, [name]: value }));
     };
 
+    // Send data to backend
     const handleSubmit = async () => {
         try {
             const response = await axios.put(
@@ -44,6 +47,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
         }
     };
 
+    // Send data to backend
     const handleDelete = async () => {
         try {
             const response = await axios.delete(deleteUserUrl);
@@ -54,6 +58,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
         }
     };
 
+    // Run function(s) if data in the condition(s) has changed
     useEffect(() => {
         if (activePID) getUserData();
     }, [activePID]);

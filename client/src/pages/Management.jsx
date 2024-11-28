@@ -21,6 +21,7 @@ const Management = () => {
     const [editModal, setEditModal] = useState(false);
     const [activePID, setActivePID] = useState(null);
 
+    //Get data from backend
     const getUserData = async () => {
         try {
             const response = await axios.get(getUserUrl);
@@ -41,6 +42,7 @@ const Management = () => {
         }
     };
 
+    //Get data from backend
     const getProductData = async () => {
         try {
             const response = await axios.get(getProductUrl);
@@ -50,6 +52,7 @@ const Management = () => {
         }
     };
 
+    // Run functions when data in condition has changed
     useEffect(() => {
         getUserData();
         getProductData();
@@ -87,7 +90,7 @@ const Management = () => {
                     <Logo />
                     <div className="flex items-end">
                         <div className="relative flex gap-7 items-center mb-2">
-                            {/* SLIDING BACKGROUND */}
+                            {/* SLIDING BUTTON BACKGROUND */}
                             <div
                                 className={`absolute top-0 left-0 h-full w-[120px] bg-orange-600 transition-transform duration-300 ${
                                     activeTab === "User"

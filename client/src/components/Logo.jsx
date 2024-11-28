@@ -5,9 +5,7 @@ const Logo = () => {
         <>
             <div className="gap-5 flex items-center justify-center py-2">
                 <img src="img/sasuke-home.png" alt="Sasuke-Pic" width="45px" />
-                <h1 className="yanone text-6xl font-bold mt-6">
-                    Sasuke Ramen
-                </h1>
+                <h1 className="yanone text-6xl font-bold mt-6">Sasuke Ramen</h1>
             </div>
         </>
     );

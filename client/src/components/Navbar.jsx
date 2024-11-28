@@ -33,6 +33,7 @@ const Navbar = () => {
         checkLogin();
     }, []);
 
+    //Navigate to Home page and send data to backend
     const handleLogout = async () => {
         try {
             const response = await axios.post(clearCookieUrl);

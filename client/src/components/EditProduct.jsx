@@ -8,6 +8,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
     const inputbox = "border w-full px-5 py-2 rounded-md placeholder:text-sm";
     const [product, setProduct] = useState(null);
 
+    // Get data from backend
     const getProductData = async () => {
         try {
             const response = await axios.get(getProductUrl);
@@ -21,11 +22,13 @@ const EditProduct = ({ activePID, setEditModal }) => {
         }
     };
 
+    // Update data if target has changed
     const handleChange = (event) => {
         const { name, value } = event.target;
         setProduct((prev) => ({ ...prev, [name]: value }));
     };
 
+    // Send data to backend
     const handleSubmit = async () => {
         try {
             const response = await axios.put(
@@ -38,6 +41,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
         }
     };
 
+    // Send data to backend
     const handleDelete = async () => {
         try {
             const response = await axios.delete(deleteProductUrl);
@@ -48,6 +52,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
         }
     };
 
+    // Run function(s) if data in the condition(s) has changed
     useEffect(() => {
         if (activePID) getProductData();
     }, [activePID]);
@@ -129,7 +134,9 @@ const EditProduct = ({ activePID, setEditModal }) => {
                                     <input
                                         className={inputbox}
                                         type="number"
-                                        value={Number(product.Spice) || Number("")}
+                                        value={
+                                            Number(product.Spice) || Number("")
+                                        }
                                         min="0"
                                         max="5"
                                         name="Spice"

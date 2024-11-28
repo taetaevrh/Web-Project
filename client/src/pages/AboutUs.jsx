@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 const AboutUs = () => {
     return (
         <div className="flex flex-col h-screen">
-
             <Navbar />
 
             <div className="relative flex-grow bg-gradient-to-r from-neutral-800 via-zinc-950 to-black">

@@ -12,11 +12,13 @@ const AddProduct = ({ setModal }) => {
         img: "",
     });
 
+    // Update data if target has changed
     const handleChange = (event) => {
         const { name, value } = event.target;
         setAddProduct((prev) => ({ ...prev, [name]: value }));
     };
 
+    // Send data to backend
     const handleSubmit = async (event) => {
         try {
             const response = await axios.post(
@@ -24,8 +26,7 @@ const AddProduct = ({ setModal }) => {
                 addProduct
             );
             setModal(false);
-        } catch (err) {
-        }
+        } catch (err) {}
     };
 
     return (
@@ -111,6 +112,8 @@ const AddProduct = ({ setModal }) => {
                                     onChange={handleChange}
                                 />
                             </label>
+
+                            {/* BUTTON */}
                             <div className="flex justify-between mt-7">
                                 <button
                                     onClick={() => setModal(false)}

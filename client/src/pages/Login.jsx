@@ -14,6 +14,7 @@ const Login = () => {
     const [recaptchaToken, setRecaptchaToken] = useState(null);
     const navigate = useNavigate();
 
+    // Send data to backend
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!recaptchaToken) return alert("Please complete the reCAPTCHA.");
@@ -28,15 +29,17 @@ const Login = () => {
                 navigate("/management");
             }
         } catch (err) {
-            return alert(err.response.data.error)
+            return alert(err.response.data.error);
         }
     };
 
+    // Update data if target has changed
     const handleChange = (event) => {
         const { name, value } = event.target;
         setUser((prev) => ({ ...prev, [name]: value }));
     };
 
+    // Update data if target has changed
     const handleRecaptchaChange = (token) => {
         setRecaptchaToken(token); // Save the token when the user completes the reCAPTCHA
     };

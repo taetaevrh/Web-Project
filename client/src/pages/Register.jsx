@@ -9,9 +9,11 @@ const Register = () => {
     const [register, setRegister] = useState();
     const navigate = useNavigate();
 
+    // Send data to backend
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (register.password !== register.confirmpassword) return alert("Confirm password is not the same as password.")
+        if (register.password !== register.confirmpassword)
+            return alert("Confirm password is not the same as password.");
         try {
             const response = await axios.post(
                 "http://localhost:3001/register",
@@ -23,6 +25,7 @@ const Register = () => {
         }
     };
 
+    // Update data if target has changed
     const handleChange = (event) => {
         const { name, value } = event.target;
         setRegister((prev) => ({ ...prev, [name]: value }));

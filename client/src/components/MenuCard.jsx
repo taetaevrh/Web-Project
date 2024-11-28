@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const MenuCard = (props) => {
     const navigate = useNavigate();
 
+    //Navigate to ProductDetail page
     const handleClick = () => {
         navigate(`/product/${props.id}`, { state: props });
     };

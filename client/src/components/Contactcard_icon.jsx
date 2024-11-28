@@ -1,5 +1,10 @@
 import React from "react";
-import { FaSquareFacebook, FaSquareInstagram, FaVk, FaTiktok } from "react-icons/fa6";
+import {
+    FaSquareFacebook,
+    FaSquareInstagram,
+    FaVk,
+    FaTiktok,
+} from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
 import { SiOnlyfans } from "react-icons/si";
 
@@ -46,20 +51,28 @@ const Contactcard_icon = (props) => {
                 <IoIosMail className="text-4xl" />
             </a>
 
+            {/* ONLYFANS ICON */}
             {props.olink === "none" ? (
                 <SiOnlyfans className="text-4xl text-blue-400" />
             ) : (
                 ""
             )}
 
+            {/* VK ICON */}
             {props.vlink === "none" ? (
                 <FaVk className="text-4xl text-blue-500" />
             ) : (
                 ""
             )}
 
-            {props.tlink === "https://www.tiktok.com/@yeenzxxx" ? 
-            <a href={props.tlink} target="_blank"><FaTiktok className="text-3xl" /></a> : ""}
+            {/* TIKTOK ICON */}
+            {props.tlink === "https://www.tiktok.com/@yeenzxxx" ? (
+                <a href={props.tlink} target="_blank">
+                    <FaTiktok className="text-3xl" />
+                </a>
+            ) : (
+                ""
+            )}
         </>
     );
 };
