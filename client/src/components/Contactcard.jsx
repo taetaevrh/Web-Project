@@ -19,13 +19,14 @@ const Contactcard = (props) => {
                     <h3 className="font-medium text-lg ml-1">{props.sid}</h3>
                     {/* ICON */}
                     <div className="flex gap-2 ml-2 mt-1 items-center">
-                        {props.name === "Panaiyakorn Phanyaichada" || props.name === "Putinan Techavataporn" ? (
+                        {props.name === "Panaiyakorn Phanyaichada" ? (
                             <Contactcard_icon
                                 flink={props.flink}
                                 ilink={props.ilink}
                                 mlink={props.mlink}
                                 olink={props.olink}
                                 vlink={props.vlink}
+                                tlink={props.tlink}
                             />
                         ) : (
                             <Contactcard_icon

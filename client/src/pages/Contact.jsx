@@ -36,6 +36,7 @@ const Contact = () => {
                         mlink="https://mail.google.com/mail/?view=cm&to=panaiyakorn.pha@student.mahidol.edu"
                         olink="none"
                         vlink="none"
+                        tlink="https://www.tiktok.com/@yeenzxxx"
                     />
                     {/* JA CARD */}
                     <Contactcard

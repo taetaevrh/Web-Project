@@ -1,10 +1,5 @@
 import React from "react";
-import {
-    FaSquareFacebook,
-    FaSquareInstagram,
-    FaVk,
-    FaHandMiddleFinger,
-} from "react-icons/fa6";
+import { FaSquareFacebook, FaSquareInstagram, FaVk, FaTiktok } from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
 import { SiOnlyfans } from "react-icons/si";
 
@@ -62,6 +57,9 @@ const Contactcard_icon = (props) => {
             ) : (
                 ""
             )}
+
+            {props.tlink === "https://www.tiktok.com/@yeenzxxx" ? 
+            <a href={props.tlink} target="_blank"><FaTiktok className="text-3xl" /></a> : ""}
         </>
     );
 };
