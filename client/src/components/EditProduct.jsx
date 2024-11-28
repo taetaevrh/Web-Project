@@ -129,7 +129,7 @@ const EditProduct = ({ activePID, setEditModal }) => {
                                     <input
                                         className={inputbox}
                                         type="number"
-                                        value={product.Spice || ""}
+                                        value={Number(product.Spice) || Number("")}
                                         min="0"
                                         max="5"
                                         name="Spice"
