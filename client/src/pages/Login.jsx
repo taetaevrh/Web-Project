@@ -83,7 +83,7 @@ const Login = () => {
                         {/* reCAPTCHA */}
                         <div className="mt-6 flex justify-center">
                             <ReCAPTCHA
-                                sitekey="6Ld17YsqAAAAAJdbg_lczBfhcrv9KJdFnYG7Cfb_" // Replace with your site key from Google reCAPTCHA
+                                sitekey="6Ld17YsqAAAAAJdbg_lczBfhcrv9KJdFnYG7Cfb_"
                                 onChange={handleRecaptchaChange}
                                 onExpired={() => setRecaptchaToken(null)} // Reset token if expired
                             />

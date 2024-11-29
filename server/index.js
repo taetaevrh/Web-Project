@@ -6,10 +6,10 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
+
 dotenv.config();
 
-// Start server
-const app = express();
+// Setup connection with database
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -24,6 +24,7 @@ db.connect((err) => {
 });
 
 // Middleware
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.json());
@@ -50,7 +51,7 @@ app.post("/register", (req, res) => {
     );
 });
 
-// User register & generate token
+// User login & generate token
 app.post("/login", async (req, res) => {
     const query =
         "SELECT Email, Password, isAdmin FROM Users WHERE Email = ? AND Password = ?";
@@ -99,7 +100,7 @@ app.post("/checktoken", (req, res) => {
                 .json({ message: "เปลี่ยน Token ทำไมครับที่รัก" });
         return res
             .status(200)
-            .json({ message: "มึงผ่าน ยินดีด้วย", result: result });
+            .json({ message: "Token Verified", result: result });
     });
 });
 
