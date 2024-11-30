@@ -139,12 +139,12 @@ app.post("/logout", (req, res) => {
 // URL: http://localhost:3001/addproduct
 // body: raw JSON
 // {
-//     "pname": "test1",
-//     "desp": "testest",
-//     "price": 195,
-//     "star": 4,
-//     "spice": 1,
-//     "img": "asddfadfasfsdf"
+//     "pname": "testproduct",
+//     "desp": "สินค้าที่ดีที่สุดของเรา",
+//     "price": 2000000,
+//     "star": 5,
+//     "spice": 0,
+//     "img": "asdfasdfasdf"
 // }
 app.post("/addproduct", (req, res) => {
     const query =
@@ -310,14 +310,15 @@ app.get("/getuser/:id", (req, res) => {
 // }
 app.put("/updateuser/:id", (req, res) => {
     const query =
-        "UPDATE Users SET Fname = ?, Lname = ?, DoB = ?, Phone = ?, Email = ?, Password = ?, isAdmin = ? WHERE UID = ?";
+        "UPDATE Users SET Fname = ?, Lname = ?, DoB = ?, Phone = ?, Email = ?, Password = ?, Address = ?, isAdmin = ? WHERE UID = ?";
 
-    const { Fname, Lname, DoB, Phone, Email, Password, isAdmin } = req.body;
+    const { Fname, Lname, DoB, Phone, Email, Password, Address, isAdmin } =
+        req.body;
     const id = req.params.id;
 
     db.query(
         query,
-        [Fname, Lname, DoB, Phone, Email, Password, isAdmin, id],
+        [Fname, Lname, DoB, Phone, Email, Password, Address, isAdmin, id],
         (err, result) => {
             if (err) return res.status(500).json({ error: err });
             res.json({
