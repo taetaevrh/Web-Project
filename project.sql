@@ -26,7 +26,9 @@ CREATE TABLE IF NOT EXISTS Products (
 
 INSERT INTO Users (Fname, Lname, DoB, Phone, Address, Email, Password, isAdmin)
 VALUES ("Varich", "Maleevan", "2004-11-20", "0846454399", "It's a secret", "varich.mal@student.mahidol.edu", "taetar2016", 1),
-("Siriprapas", "Kimpee", "2005-07-21", "", "", "siriprapas.kim@student.mahidol.edu", "Image0123456", 1)
+("Siriprapas", "Kimpee", "2005-07-21", "", "", "siriprapas.kim@student.mahidol.edu", "Image0123456", 1),
+("User", "User", "2000-01-01", "", "", "user@user.com", "user", 0),
+("Admin", "Admin", "2000-01-01", "", "", "admin@admin.com", "admin", 1)
 ;
 
 INSERT INTO Products (Pname, Desp, Price, Spice, Star, Img) VALUES
