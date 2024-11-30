@@ -35,7 +35,19 @@ app.use(
     })
 );
 
-// User register
+// Testing User Register
+// method: post
+// URL: http://localhost:3001/register
+// body: raw JSON
+// {
+//     "fname": "Somtum",
+//     "lname": "Sabmak",
+//     "dob": "2000-06-11",
+//     "phone": "0888888888",
+//     "address": "Mahidol University",
+//     "email": "test1@test.com",
+//     "password": "test"
+// }
 app.post("/register", (req, res) => {
     const query =
         "INSERT INTO Users (Fname, Lname, DoB, Phone, Address, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -51,7 +63,15 @@ app.post("/register", (req, res) => {
     );
 });
 
-// User login & generate token
+// Testing User Login
+// method: post
+// URL: http://localhost:3001/login
+// body: raw JSON
+// {
+//     "email": "test1@test.com",
+//     "password": "test",
+//     "recaptchaToken": ""
+// }
 app.post("/login", async (req, res) => {
     const query =
         "SELECT Email, Password, isAdmin FROM Users WHERE Email = ? AND Password = ?";
@@ -82,11 +102,13 @@ app.post("/login", async (req, res) => {
             }
         );
         res.cookie("key", token);
-        res.json({ message: "Generate key successfully!", result: result[0] });
+        res.json({ message: "Logged in successfully!", result: result[0] });
     });
 });
 
-// Check token
+// Testing Token Check
+// method: post
+// URL: http://localhost:3001/checktoken
 app.post("/checktoken", (req, res) => {
     const token = req.cookies.key;
 
@@ -104,17 +126,31 @@ app.post("/checktoken", (req, res) => {
     });
 });
 
-// User logout
+// Testing Logout
+// method: post
+// URL: http://localhost:3001/logout
 app.post("/logout", (req, res) => {
     res.clearCookie("key");
     res.json({ message: "Logged out successfully" });
 });
 
 // Add product
+// method: post
+// URL: http://localhost:3001/addproduct
+// body: raw JSON
+// {
+//     "pname": "test1",
+//     "desp": "testest",
+//     "price": 195,
+//     "star": 4,
+//     "spice": 1,
+//     "img": "asddfadfasfsdf"
+// }
 app.post("/addproduct", (req, res) => {
     const query =
         "INSERT INTO Products (Pname, Desp, Price, Star, Spice, Img) VALUES (?, ?, ?, ?, ?, ?)";
     const { pname, desp, price, star, spice, img } = req.body;
+
     db.query(query, [pname, desp, price, star, spice, img], (err, result) => {
         if (err) return res.status(500).json({ error: err });
         res.json({ message: "Product added successfully" });
@@ -122,11 +158,25 @@ app.post("/addproduct", (req, res) => {
 });
 
 // Add user
+// method: post
+// URL: http://localhost:3001/adduser
+// body: raw JSON
+// {
+//     "fname": "test2",
+//     "lname": "test2",
+//     "dob": "2012-07-04",
+//     "phone": "0987654321",
+//     "address": "asdfasdfasfdsf",
+//     "email": "test2@test2.com",
+//     "password": "test",
+//     "isAdmin": 0
+// }
 app.post("/adduser", (req, res) => {
     const query =
         "INSERT INTO Users (Fname, Lname, DoB, Phone, Address, Email, Password, isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     const { fname, lname, dob, phone, address, email, password, isAdmin } =
         req.body;
+
     db.query(
         query,
         [fname, lname, dob, phone, address, email, password, isAdmin],
@@ -138,6 +188,8 @@ app.post("/adduser", (req, res) => {
 });
 
 // Get all products
+// method: get
+// URL: http://localhost:3001/getproducts
 app.get("/getproducts", (req, res) => {
     const query = "SELECT * FROM Products";
 
@@ -151,6 +203,8 @@ app.get("/getproducts", (req, res) => {
 });
 
 // Get product by ID
+// method: get
+// URL: http://localhost:3001/getproduct/{id}
 app.get("/getproduct/:id", (req, res) => {
     const query = "SELECT * FROM Products WHERE PID = ?";
     const id = req.params.id;
@@ -165,6 +219,17 @@ app.get("/getproduct/:id", (req, res) => {
 });
 
 // Update product by ID
+// method: put
+// URL: http://localhost:3001/updateproduct/{id}
+// body: raw JSON
+// {
+//     "Pname": "test1",
+//     "Desp": "testest",
+//     "Price": 195,
+//     "Spice": 0,
+//     "Star": 4,
+//     "Img": "asddfadfasfsdf"
+// }
 app.put("/updateproduct/:id", (req, res) => {
     const query =
         "UPDATE Products SET Pname = ?, Desp = ?, Price = ?, Star = ?, Spice = ?, Img = ? WHERE PID = ?";
@@ -185,6 +250,8 @@ app.put("/updateproduct/:id", (req, res) => {
 });
 
 // Delete product by ID
+// method: delete
+// URL: http://localhost:3001/deleteproduct/{id}
 app.delete("/deleteproduct/:id", (req, res) => {
     const query = "DELETE FROM Products WHERE PID = ?";
     const id = req.params.id;
@@ -199,6 +266,8 @@ app.delete("/deleteproduct/:id", (req, res) => {
 });
 
 // Get all users
+// method: get
+// URL: http://localhost:3001/getusers
 app.get("/getusers", (req, res) => {
     const query =
         "SELECT UID, Fname, Lname, DATE_FORMAT(DoB, '%Y-%m-%d') AS DoB, Phone, Address, Email, Password, isAdmin FROM Users";
@@ -210,6 +279,8 @@ app.get("/getusers", (req, res) => {
 });
 
 // Get user by ID
+// method: get
+// URL: http://localhost:3001/getuser/{id}
 app.get("/getuser/:id", (req, res) => {
     const query =
         "SELECT UID, Fname, Lname, DATE_FORMAT(DoB, '%Y-%m-%d') AS DoB, Phone, Address, Email, Password, isAdmin FROM Users WHERE UID = ?";
@@ -225,6 +296,18 @@ app.get("/getuser/:id", (req, res) => {
 });
 
 // Update user by ID
+// method: put
+// URL: http://localhost:3001/updateuser/{id}
+// body: raw JSON
+// {
+//     "Fname": "test2",
+//     "Lname": "testestest",
+//     "DoB": "2012-07-04",
+//     "Phone": "0987654321",
+//     "Email": "test2@test2.com",
+//     "Password": "test"
+//     "isAdmin": 1
+// }
 app.put("/updateuser/:id", (req, res) => {
     const query =
         "UPDATE Users SET Fname = ?, Lname = ?, DoB = ?, Phone = ?, Email = ?, Password = ?, isAdmin = ? WHERE UID = ?";
@@ -246,6 +329,8 @@ app.put("/updateuser/:id", (req, res) => {
 });
 
 // Delete user by ID
+// method: delete
+// URL: http://localhost:3001/deleteuser/{id}
 app.delete("/deleteuser/:id", (req, res) => {
     const query = "DELETE FROM Users WHERE UID = ?";
     const id = req.params.id;

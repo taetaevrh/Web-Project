@@ -41,6 +41,7 @@ const Login = () => {
 
     // Update data if target has changed
     const handleRecaptchaChange = (token) => {
+        console.log(token);
         setRecaptchaToken(token); // Save the token when the user completes the reCAPTCHA
     };
 
