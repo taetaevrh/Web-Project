@@ -165,10 +165,10 @@ app.post("/addproduct", (req, res) => {
 //     "fname": "test2",
 //     "lname": "test2",
 //     "dob": "2012-07-04",
-//     "phone": "0987654321",
-//     "address": "asdfasdfasfdsf",
+//     "phone": "0987654321",,
 //     "email": "test2@test2.com",
 //     "password": "test",
+//     "address": "asdfasdfasfdsf"
 //     "isAdmin": 0
 // }
 app.post("/adduser", (req, res) => {
